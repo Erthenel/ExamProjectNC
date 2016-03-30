@@ -1,16 +1,15 @@
 package dao;
 
 
-
+import java.sql.SQLException;
 import java.util.List;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
-import model.User;
+import model.*;
 
 public class UserDAOImpl implements UserDAO {
-
 
     private SessionFactory sessionFactory;
 
@@ -33,4 +32,24 @@ public class UserDAOImpl implements UserDAO {
         session.close();
         return userList;
     }
+
+    public void addExam(Exam exam) {
+        Session session = null;
+        session = this.sessionFactory.openSession();
+        session.beginTransaction();
+        session.save(exam);
+        session.getTransaction().commit();
+        if (session != null && session.isOpen()) {
+            session.close();
+        }
+    }
+
+    public List<Exam> list2() {
+        Session session = this.sessionFactory.openSession();
+        List<Exam> examList = session.createQuery("from model.Exam").list();
+        session.close();
+        return examList;
+    }
 }
+
+

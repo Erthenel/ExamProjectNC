@@ -39,5 +39,8 @@
     <bean id="userDAO" class="dao.UserDAOImpl">
         <property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />
     </bean>
+    <bean id="ExamDAO" class="dao.ExamDAOImpl">
+        <property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory"/>
+    </bean>
 
 </beans>
