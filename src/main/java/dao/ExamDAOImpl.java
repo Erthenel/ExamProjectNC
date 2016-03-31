@@ -52,7 +52,7 @@ public class ExamDAOImpl implements ExamDAO {
         }
     }
 
-    public Exam getExamBYId(Long exam_id) throws SQLException {
+    public Exam getExamById(Long exam_id) throws SQLException {
         Session session = null;
         Exam exam = null;
         try {
@@ -72,6 +72,7 @@ public class ExamDAOImpl implements ExamDAO {
 
 
     }
+
 
     public Collection getAllExams() throws SQLException {
         Session session = null;

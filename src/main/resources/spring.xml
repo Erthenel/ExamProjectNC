@@ -39,8 +39,15 @@
     <bean id="userDAO" class="dao.UserDAOImpl">
         <property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />
     </bean>
-    <bean id="ExamDAO" class="dao.ExamDAOImpl">
+    <bean id="examDAO" class="dao.ExamDAOImpl">
         <property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory"/>
     </bean>
+    <bean id="groupDAO" class="dao.GroupDAOImpl">
+        <property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory"/>
+    </bean>
+    <bean id="examinedDAO" class="dao.ExaminedDAOImpl">
+        <property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory"/>
+    </bean>
+
 
 </beans>

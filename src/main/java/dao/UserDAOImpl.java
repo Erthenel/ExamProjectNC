@@ -33,23 +33,6 @@ public class UserDAOImpl implements UserDAO {
         return userList;
     }
 
-    public void addExam(Exam exam) {
-        Session session = null;
-        session = this.sessionFactory.openSession();
-        session.beginTransaction();
-        session.save(exam);
-        session.getTransaction().commit();
-        if (session != null && session.isOpen()) {
-            session.close();
-        }
-    }
-
-    public List<Exam> list2() {
-        Session session = this.sessionFactory.openSession();
-        List<Exam> examList = session.createQuery("from model.Exam").list();
-        session.close();
-        return examList;
-    }
 }
 
 

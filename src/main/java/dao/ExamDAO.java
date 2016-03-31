@@ -11,7 +11,7 @@ public interface ExamDAO {
 
     public void updateExam(Long exam_id, Exam exam) throws SQLException;
 
-    public Exam getExamBYId(Long exam_id) throws SQLException;
+    public Exam getExamById(Long exam_id) throws SQLException;
 
     public void deleteExam(Exam exam) throws SQLException;
 
