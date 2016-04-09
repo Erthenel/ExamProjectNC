@@ -14,11 +14,15 @@ public class Exam {
     @Column(name="exam_id", nullable= false, unique=true)
     private int exam_id;
 
-    //Foreign Key candidate
+    //Cвязь с таблицей users
+    @ManyToOne
+    @JoinColumn(name = "user_id")
     @Column(name="teacher_id", nullable = false)
     private int teacher_id;
 
-    //Foreign Key candidate
+    //Связь с таблицей groups
+    @ManyToOne
+    @JoinColumn(name = "group_id")
     @Column(name="group_id", nullable = false)
     private int group_id;
 
@@ -30,6 +34,17 @@ public class Exam {
 
     @Column(name="exam_subject", nullable = false, length = 355)
     private String exam_subject;
+
+    public Exam() {
+    }
+
+    public Exam(int teacher_id, int group_id, String exam_theme, Date exam_date, String exam_subject) {
+        this.teacher_id = teacher_id;
+        this.group_id = group_id;
+        this.exam_theme = exam_theme;
+        this.exam_date = exam_date;
+        this.exam_subject = exam_subject;
+    }
 
     public int getExam_id() {
         return exam_id;
@@ -78,4 +93,20 @@ public class Exam {
     public void setExam_subject(String exam_subject) {
         this.exam_subject = exam_subject;
     }
+
+    /*
+    Для тестов на этапе работы консольного приложения
+     */
+    @Override
+    public String toString() {
+        return "Exam{" +
+                "exam_id=" + exam_id +
+                ", teacher=" + teacher_id +
+                ", group=" + group_id +
+                ", exam_theme='" + exam_theme + '\'' +
+                ", exam_date=" + exam_date +
+                ", exam_subject='" + exam_subject + '\'' +
+                '}';
+    }
+
 }

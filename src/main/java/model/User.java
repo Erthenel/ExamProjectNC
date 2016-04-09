@@ -7,9 +7,15 @@ import javax.persistence.*;
 
 public class User {
 
+    //Связь с таблицами exams и examined
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     @Column(name="user_id", unique = true, nullable = false)
+    @OneToMany
+    @JoinColumns({
+            @JoinColumn(name="teacher_id"),
+            @JoinColumn(name="student_id")
+    })
     private int user_id;
 
     @Column(name="user_email", length=355, nullable=false,unique = true)
@@ -23,6 +29,15 @@ public class User {
 
     @Column(name="user_role", nullable=false)
     private int user_role;
+
+    public User() {
+    }
+    public User(String user_email, String user_password, String user_fullName, int user_role) {
+        this.user_email = user_email;
+        this.user_password = user_password;
+        this.user_fullName = user_fullName;
+        this.user_role = user_role;
+    }
 
     public int getUser_id() {
         return user_id;
@@ -62,5 +77,19 @@ public class User {
 
     public void setUser_role(int user_role) {
         this.user_role = user_role;
+    }
+
+    /*
+    Для тестов на этапе работы консольного приложения
+     */
+    @Override
+    public String toString() {
+        return "User{" +
+                "user_id=" + user_id +
+                ", user_email=" + user_email +
+                ", user_password=" + user_password +
+                ", user_fullName='" + user_fullName + '\'' +
+                ", user_role='" + user_role + '\'' +
+                '}';
     }
 }

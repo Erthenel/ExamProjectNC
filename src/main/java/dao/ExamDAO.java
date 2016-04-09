@@ -7,16 +7,15 @@ import java.sql.SQLException;
 import java.util.List;
 
 public interface ExamDAO {
-    public void addExam(Exam exam) throws SQLException;
+    public void addExam(Exam exam);
 
-    public void updateExam(Long exam_id, Exam exam) throws SQLException;
+    public void updateExam(int exam_id, Exam exam);
 
-    public Exam getExamById(Long exam_id) throws SQLException;
+    public Exam getExamById(int exam_id);
 
-    public void deleteExam(Exam exam) throws SQLException;
+    public List<Exam> getAllExams();
 
-    public Collection getAllExams() throws SQLException;
-
-    List<Exam> list();
+    public void deleteExam(Exam exam);
 }
+
 
