@@ -8,15 +8,17 @@ import javax.persistence.*;
 public class Group {
 
     //Cвязь с таблицами exams и examined;
-    @Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    /*
     @OneToMany
     @JoinColumns({
             @JoinColumn(name = "group_id"),
             @JoinColumn(name = "group_id")
     })
     private Exam exam; private Examined examined;
+    */
 
+    @Id
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     @Column(name="group_id", nullable= false, unique=true)
     private int group_id;
 

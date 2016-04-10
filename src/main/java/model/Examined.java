@@ -13,17 +13,23 @@ public class Examined {
     @Column(name="examined_id", nullable= false, unique=true)
     private int examined_id;
 
+    /*
     //Cвязь с таблицей users
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
+    */
 
     @Column(name="student_id", nullable = false)
     private int student_id;
 
+    /*
     //Связь с таблицей groups
     @ManyToOne
     @JoinColumn(name = "group_id")
+    private Group group;
+    */
+
     @Column(name="group_id", nullable = false)
     private int group_id;
 

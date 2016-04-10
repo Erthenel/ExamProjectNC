@@ -15,17 +15,21 @@ public class Exam {
     private int exam_id;
 
     //Cвязь с таблицей users
+    /*
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
+    */
 
     @Column(name="teacher_id", nullable = false)
     private int teacher_id;
 
+    /*
     //Связь с таблицей groups
     @ManyToOne
     @JoinColumn(name = "group_id")
     private Group group;
+    */
 
     @Column(name="group_id", nullable = false)
     private int group_id;

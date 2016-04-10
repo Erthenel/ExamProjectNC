@@ -7,19 +7,21 @@ import javax.persistence.*;
 
 public class User {
 
-    //Связь с таблицами exams и examined
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     @Column(name="user_id", unique = true, nullable = false)
     private int user_id;
 
     //Связь с таблицами exams и examined
+
+    /*@OneToMany
+    @JoinColumn(name="teacher_id")
+    private Exam exam;
+
     @OneToMany
-    @JoinColumns({
-            @JoinColumn(name="teacher_id"),
-            @JoinColumn(name="student_id")
-    })
-    private Exam exam; private User user;
+    @JoinColumn(name="student_id")
+    private User user;
+    */
 
     @Column(name="user_email", length=355, nullable=false,unique = true)
     private String user_email;
