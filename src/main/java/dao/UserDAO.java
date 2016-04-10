@@ -11,5 +11,11 @@ public interface UserDAO {
 
     List<User> list();
 
+    void deleteUser(User p);
+
+    void updateUser(User p);
+
+
+
 
 }
