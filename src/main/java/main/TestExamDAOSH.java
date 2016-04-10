@@ -19,8 +19,8 @@ public class TestExamDAOSH {
         ExamDAO examDAO = context.getBean(ExamDAO.class);
 
         //тестируем методы здесь
-     /*
-     * Надо доработать тесты
+
+
         Exam exam = new Exam();
         exam.setExam_subject("math");
         //текущая дата
@@ -29,16 +29,16 @@ public class TestExamDAOSH {
         Group group = new Group();
         group.setGroup_id(3);
         group.setGroup_name("third");
-
+        /*
         exam.setGroup(group);
         User teacher = new User();
         teacher.setUser_id(1);
         exam.setTeacher(teacher);
 
-
+        */
         examDAO.addExam(exam);
 
-      */
+
 
         context.close();
 

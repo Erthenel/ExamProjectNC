@@ -1,6 +1,7 @@
 package model;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 @Table(name="groups", uniqueConstraints = @UniqueConstraint(columnNames={"group_id"}))
@@ -8,14 +9,13 @@ import javax.persistence.*;
 public class Group {
 
     //Cвязь с таблицами exams и examined;
-    /*
-    @OneToMany
-    @JoinColumns({
-            @JoinColumn(name = "group_id"),
-            @JoinColumn(name = "group_id")
-    })
-    private Exam exam; private Examined examined;
-    */
+
+    @OneToMany(mappedBy = "group")
+    private Set<Exam> exams;
+
+
+    @OneToMany(mappedBy = "group")
+    private Set<Examined> examineds;
 
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)

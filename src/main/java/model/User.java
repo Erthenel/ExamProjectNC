@@ -1,6 +1,7 @@
 package model;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 @Table(name="users", uniqueConstraints={@UniqueConstraint(columnNames={"user_email","user_id"})})
@@ -14,14 +15,27 @@ public class User {
 
     //Связь с таблицами exams и examined
 
-    /*@OneToMany
-    @JoinColumn(name="teacher_id")
-    private Exam exam;
+    @OneToMany(mappedBy = "user")
+    private Set<Exam> exams;
 
-    @OneToMany
-    @JoinColumn(name="student_id")
-    private User user;
-    */
+   @OneToMany(mappedBy = "user")
+    private Set<Examined> examineds;
+
+    public Set<Exam> getExams() {
+        return exams;
+    }
+
+    public void setExams(Set<Exam> exams) {
+        this.exams = exams;
+    }
+
+    public Set<Examined> getExamineds() {
+        return examineds;
+    }
+
+    public void setExamineds(Set<Examined> examineds) {
+        this.examineds = examineds;
+    }
 
     @Column(name="user_email", length=355, nullable=false,unique = true)
     private String user_email;

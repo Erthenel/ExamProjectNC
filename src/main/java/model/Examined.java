@@ -13,25 +13,24 @@ public class Examined {
     @Column(name="examined_id", nullable= false, unique=true)
     private int examined_id;
 
-    /*
+
     //Cвязь с таблицей users
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
-    */
 
     @Column(name="student_id", nullable = false)
     private int student_id;
 
-    /*
+
     //Связь с таблицей groups
     @ManyToOne
     @JoinColumn(name = "group_id")
     private Group group;
-    */
 
-    @Column(name="group_id", nullable = false)
-    private int group_id;
+
+    @Column(name="examined_group_id", nullable = false)
+    private int examined_group_id;
 
     @Column(name="examined_mark", nullable = false)
     private float examined_mark;
@@ -41,9 +40,9 @@ public class Examined {
 
     public Examined() {
     }
-    public Examined(int student_id, int group_id, float examined_mark, Timestamp examined_answer_time) {
+    public Examined(int student_id, int examined_group_id, float examined_mark, Timestamp examined_answer_time) {
         this.student_id = student_id;
-        this.group_id = group_id;
+        this.examined_group_id = examined_group_id;
         this.examined_mark = examined_mark;
         this.examined_answer_time = examined_answer_time;
     }
@@ -64,12 +63,12 @@ public class Examined {
         this.student_id = student_id;
     }
 
-    public int getGroup_id() {
-        return group_id;
+    public int getExamined_group_id() {
+        return examined_group_id;
     }
 
-    public void setGroup_id(int group_id) {
-        this.group_id = group_id;
+    public void setExamined_group_id(int examined_group_id) {
+        this.examined_group_id = examined_group_id;
     }
 
     public float getExamined_mark() {
@@ -95,7 +94,7 @@ public class Examined {
         return "Examined{" +
                 "examined_id=" + examined_id +
                 ", student_id=" + student_id +
-                ", group_id=" + group_id +
+                ", examined_group_id=" + examined_group_id +
                 ", examined_mark='" + examined_mark + '\'' +
                 ", examined_answer_time='" + examined_answer_time + '\'' +
                 '}';

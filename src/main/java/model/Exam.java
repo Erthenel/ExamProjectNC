@@ -15,24 +15,32 @@ public class Exam {
     private int exam_id;
 
     //Cвязь с таблицей users
-    /*
     @ManyToOne
-    @JoinColumn(name = "user_id")
+    @JoinColumn(name = "user_id",
+            foreignKey = @ForeignKey(name = "USER_ID_FK")
+    )
     private User user;
-    */
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
 
     @Column(name="teacher_id", nullable = false)
     private int teacher_id;
 
-    /*
-    //Связь с таблицей groups
     @ManyToOne
-    @JoinColumn(name = "group_id")
+    @JoinColumn(name = "group_id",
+            foreignKey = @ForeignKey(name = "GROUP_ID_FK")
+    )
     private Group group;
-    */
 
-    @Column(name="group_id", nullable = false)
-    private int group_id;
+
+    @Column(name="exam_group_id", nullable = false)
+    private int exam_group_id;
 
     @Column(name="exam_theme", nullable = false, length=355)
     private String exam_theme;
@@ -48,7 +56,7 @@ public class Exam {
 
     public Exam(int teacher_id, int group_id, String exam_theme, Date exam_date, String exam_subject) {
         this.teacher_id = teacher_id;
-        this.group_id = group_id;
+        this.exam_group_id = group_id;
         this.exam_theme = exam_theme;
         this.exam_date = exam_date;
         this.exam_subject = exam_subject;
@@ -71,11 +79,11 @@ public class Exam {
     }
 
     public int getGroup_id() {
-        return group_id;
+        return exam_group_id;
     }
 
     public void setGroup_id(int group_id) {
-        this.group_id = group_id;
+        this.exam_group_id = group_id;
     }
 
     public String getExam_theme() {
@@ -110,7 +118,7 @@ public class Exam {
         return "Exam{" +
                 "exam_id=" + exam_id +
                 ", teacher=" + teacher_id +
-                ", group=" + group_id +
+                ", group=" + exam_group_id +
                 ", exam_theme='" + exam_theme + '\'' +
                 ", exam_date=" + exam_date +
                 ", exam_subject='" + exam_subject + '\'' +
