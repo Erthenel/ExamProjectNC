@@ -7,7 +7,7 @@ import javax.persistence.*;
 
 public class Group {
 
-    //Cвязь с таблицей exams
+    //Cвязь с таблицами exams и examined;
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     @OneToMany
@@ -15,6 +15,8 @@ public class Group {
             @JoinColumn(name = "group_id"),
             @JoinColumn(name = "group_id")
     })
+    private Exam exam; private Examined examined;
+
     @Column(name="group_id", nullable= false, unique=true)
     private int group_id;
 

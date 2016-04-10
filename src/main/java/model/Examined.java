@@ -16,6 +16,8 @@ public class Examined {
     //Cвязь с таблицей users
     @ManyToOne
     @JoinColumn(name = "user_id")
+    private User user;
+
     @Column(name="student_id", nullable = false)
     private int student_id;
 

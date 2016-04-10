@@ -11,12 +11,15 @@ public class User {
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     @Column(name="user_id", unique = true, nullable = false)
+    private int user_id;
+
+    //Связь с таблицами exams и examined
     @OneToMany
     @JoinColumns({
             @JoinColumn(name="teacher_id"),
             @JoinColumn(name="student_id")
     })
-    private int user_id;
+    private Exam exam; private User user;
 
     @Column(name="user_email", length=355, nullable=false,unique = true)
     private String user_email;
