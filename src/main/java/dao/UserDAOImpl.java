@@ -25,6 +25,24 @@ public class UserDAOImpl implements UserDAO {
         session.close();
     }
 
+    public void deleteUser(User user) {
+        Session session = this.sessionFactory.openSession();
+        Transaction tx = session.beginTransaction();
+        session.delete(user);
+        tx.commit();
+        session.close();
+
+    }
+
+    public void updateUser(User user) {
+        Session session = this.sessionFactory.openSession();
+        Transaction tx = session.beginTransaction();
+        session.update(user);
+        tx.commit();
+        session.close();
+    }
+
+
     @SuppressWarnings("unchecked")
     public List<User> list() {
         Session session = this.sessionFactory.openSession();
