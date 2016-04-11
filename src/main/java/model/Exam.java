@@ -9,35 +9,28 @@ import java.sql.Date;
 
 public class Exam {
 
+    //mapping for 'users' table
+    @ManyToOne
+    @JoinColumn(name = "user_id",
+            foreignKey = @ForeignKey(name = "EXAM_TO_USER_ID_FK")
+    )
+    private User user;
+
+    //mapping for 'groups' table
+    @ManyToOne
+    @JoinColumn(name = "group_id",
+            foreignKey = @ForeignKey(name = "EXAM_TO_GROUP_ID_FK")
+    )
+    private Group group;
+
+    //mappings for 'exam' table columns
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     @Column(name="exam_id", nullable= false, unique=true)
     private int exam_id;
 
-    //Cвязь с таблицей users
-    @ManyToOne
-    @JoinColumn(name = "user_id",
-            foreignKey = @ForeignKey(name = "USER_ID_FK")
-    )
-    private User user;
-
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
-
     @Column(name="teacher_id", nullable = false)
     private int teacher_id;
-
-    @ManyToOne
-    @JoinColumn(name = "group_id",
-            foreignKey = @ForeignKey(name = "GROUP_ID_FK")
-    )
-    private Group group;
-
 
     @Column(name="exam_group_id", nullable = false)
     private int exam_group_id;
@@ -51,6 +44,7 @@ public class Exam {
     @Column(name="exam_subject", nullable = false, length = 355)
     private String exam_subject;
 
+    //Constructors
     public Exam() {
     }
 
@@ -61,6 +55,11 @@ public class Exam {
         this.exam_date = exam_date;
         this.exam_subject = exam_subject;
     }
+
+    //Getters and Setters
+    public User getUser() { return user; }
+
+    public void setUser(User user) { this.user = user; }
 
     public int getExam_id() {
         return exam_id;
@@ -76,14 +75,6 @@ public class Exam {
 
     public void setTeacher_id(int teacher_id) {
         this.teacher_id = teacher_id;
-    }
-
-    public int getGroup_id() {
-        return exam_group_id;
-    }
-
-    public void setGroup_id(int group_id) {
-        this.exam_group_id = group_id;
     }
 
     public String getExam_theme() {
@@ -110,9 +101,15 @@ public class Exam {
         this.exam_subject = exam_subject;
     }
 
-    /*
-    Для тестов на этапе работы консольного приложения
-     */
+    public int getExam_group_id() { return exam_group_id; }
+
+    public void setExam_group_id(int exam_group_id) { this.exam_group_id = exam_group_id; }
+
+    public Group getGroup() { return group; }
+
+    public void setGroup(Group group) { this.group = group; }
+
+    //For testing
     @Override
     public String toString() {
         return "Exam{" +

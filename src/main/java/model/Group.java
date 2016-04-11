@@ -8,15 +8,15 @@ import java.util.Set;
 
 public class Group {
 
-    //Cвязь с таблицами exams и examined;
-
+    //mapping for 'exams' table
     @OneToMany(mappedBy = "group")
     private Set<Exam> exams;
 
-
+    //mapping for 'examined' table
     @OneToMany(mappedBy = "group")
-    private Set<Examined> examineds;
+    private Set<Examined> examinees;
 
+    //mappings for 'groups' table columns
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     @Column(name="group_id", nullable= false, unique=true)
@@ -25,12 +25,15 @@ public class Group {
     @Column(name="group_name", nullable = false, length=355)
     private String group_name;
 
+    //Constructors
     public Group() {
     }
+
     public Group(String group_name) {
         this.group_name = group_name;
     }
 
+    //Getters and Setters
     public int getGroup_id() {
         return group_id;
     }
@@ -47,10 +50,15 @@ public class Group {
         this.group_name = group_name;
     }
 
+    public Set<Exam> getExams() { return exams; }
 
-    /*
-    Для тестов на этапе работы консольного приложения
-     */
+    public void setExams(Set<Exam> exams) { this.exams = exams; }
+
+    public Set<Examined> getExaminees() { return examinees; }
+
+    public void setExaminees(Set<Examined> examinees) { this.examinees = examinees; }
+
+    //For testing
     @Override
     public String toString() {
         return "Group{" +

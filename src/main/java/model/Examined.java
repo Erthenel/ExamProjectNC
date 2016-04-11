@@ -8,29 +8,29 @@ import java.sql.Timestamp;
 
 public class Examined {
 
+    //mapping for 'users' table
+    @ManyToOne
+    @JoinColumn(name = "user_id",
+            foreignKey = @ForeignKey(name = "EXAMINED_TO_USER_ID_FK"))
+    private User user;
+
+    //mapping for 'groups' table
+    @ManyToOne
+    @JoinColumn(name = "group_id",
+            foreignKey = @ForeignKey(name = "EXAMINED_TO_GROUP_ID_FK"))
+    private Group group;
+
+    //mappings for 'examined' table columns
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     @Column(name="examined_id", nullable= false, unique=true)
     private int examined_id;
 
-
-    //Cвязь с таблицей users
-    @ManyToOne
-    @JoinColumn(name = "user_id")
-    private User user;
+    @Column(name="examined_group_id", nullable = false)
+    private int examined_group_id;
 
     @Column(name="student_id", nullable = false)
     private int student_id;
-
-
-    //Связь с таблицей groups
-    @ManyToOne
-    @JoinColumn(name = "group_id")
-    private Group group;
-
-
-    @Column(name="examined_group_id", nullable = false)
-    private int examined_group_id;
 
     @Column(name="examined_mark", nullable = false)
     private float examined_mark;
@@ -38,8 +38,10 @@ public class Examined {
     @Column(name="examined_answer_time", nullable = false)
     private Timestamp examined_answer_time;
 
+    //Constructors
     public Examined() {
     }
+
     public Examined(int student_id, int examined_group_id, float examined_mark, Timestamp examined_answer_time) {
         this.student_id = student_id;
         this.examined_group_id = examined_group_id;
@@ -47,6 +49,7 @@ public class Examined {
         this.examined_answer_time = examined_answer_time;
     }
 
+    //Getters and Setters
     public int getExamined_id() {
         return examined_id;
     }
@@ -83,12 +86,17 @@ public class Examined {
         return examined_answer_time;
     }
 
-    public void setExamined_answer_time(Timestamp examined_answer_time) {
-        this.examined_answer_time = examined_answer_time;
-    }
-    /*
-    Для тестов на этапе работы консольного приложения
-     */
+    public void setExamined_answer_time(Timestamp examined_answer_time) { this.examined_answer_time = examined_answer_time; }
+
+    public User getUser() { return user; }
+
+    public void setUser(User user) { this.user = user; }
+
+    public Group getGroup() { return group; }
+
+    public void setGroup(Group group) { this.group = group; }
+
+    //For testing
     @Override
     public String toString() {
         return "Examined{" +

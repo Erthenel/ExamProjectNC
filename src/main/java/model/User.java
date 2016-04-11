@@ -8,34 +8,19 @@ import java.util.Set;
 
 public class User {
 
+    //mapping for 'exams' table
+    @OneToMany(mappedBy = "user")
+    private Set<Exam> exams;
+
+    //mapping for 'examined' table
+    @OneToMany(mappedBy = "user")
+    private Set<Examined> examinees;
+
+    //mappings for 'users' table columns
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     @Column(name="user_id", unique = true, nullable = false)
     private int user_id;
-
-    //Связь с таблицами exams и examined
-
-    @OneToMany(mappedBy = "user")
-    private Set<Exam> exams;
-
-   @OneToMany(mappedBy = "user")
-    private Set<Examined> examineds;
-
-    public Set<Exam> getExams() {
-        return exams;
-    }
-
-    public void setExams(Set<Exam> exams) {
-        this.exams = exams;
-    }
-
-    public Set<Examined> getExamineds() {
-        return examineds;
-    }
-
-    public void setExamineds(Set<Examined> examineds) {
-        this.examineds = examineds;
-    }
 
     @Column(name="user_email", length=355, nullable=false,unique = true)
     private String user_email;
@@ -49,6 +34,7 @@ public class User {
     @Column(name="user_role", nullable=false)
     private int user_role;
 
+    //Constructors
     public User() {
     }
     public User(String user_email, String user_password, String user_fullName, int user_role) {
@@ -58,6 +44,7 @@ public class User {
         this.user_role = user_role;
     }
 
+    //Getters and Setters
     public int getUser_id() {
         return user_id;
     }
@@ -98,9 +85,15 @@ public class User {
         this.user_role = user_role;
     }
 
-    /*
-    Для тестов на этапе работы консольного приложения
-     */
+    public Set<Exam> getExams() { return exams; }
+
+    public void setExams(Set<Exam> exams) { this.exams = exams; }
+
+    public Set<Examined> getExaminees() { return examinees; }
+
+    public void setExaminees(Set<Examined> examinees) { this.examinees = examinees; }
+
+    //For testing
     @Override
     public String toString() {
         return "User{" +
