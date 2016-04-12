@@ -1,4 +1,4 @@
-package model;
+package ExamProjectNC.shared.dto;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
@@ -6,19 +6,22 @@ import java.sql.Timestamp;
 @Entity
 @Table(name="examined", uniqueConstraints = @UniqueConstraint(columnNames={"examined_id"}))
 
-public class Examined {
+public class ExaminedDTO implements java.io.Serializable {
+
+    //used during deserialization for verifying class version and etc.
+    private static final long serialVersionUID = 6337148546446600161L;
 
     //mapping for 'users' table
     @ManyToOne
     @JoinColumn(name = "user_id",
             foreignKey = @ForeignKey(name = "EXAMINED_TO_USER_ID_FK"))
-    private User user;
+    private UserDTO user;
 
     //mapping for 'groups' table
     @ManyToOne
     @JoinColumn(name = "group_id",
             foreignKey = @ForeignKey(name = "EXAMINED_TO_GROUP_ID_FK"))
-    private Group group;
+    private GroupDTO group;
 
     //mappings for 'examined' table columns
     @Id
@@ -39,10 +42,10 @@ public class Examined {
     private Timestamp examined_answer_time;
 
     //Constructors
-    public Examined() {
+    public ExaminedDTO() {
     }
 
-    public Examined(int student_id, int examined_group_id, float examined_mark, Timestamp examined_answer_time) {
+    public ExaminedDTO(int student_id, int examined_group_id, float examined_mark, Timestamp examined_answer_time) {
         this.student_id = student_id;
         this.examined_group_id = examined_group_id;
         this.examined_mark = examined_mark;
@@ -88,18 +91,18 @@ public class Examined {
 
     public void setExamined_answer_time(Timestamp examined_answer_time) { this.examined_answer_time = examined_answer_time; }
 
-    public User getUser() { return user; }
+    public UserDTO getUser() { return user; }
 
-    public void setUser(User user) { this.user = user; }
+    public void setUser(UserDTO user) { this.user = user; }
 
-    public Group getGroup() { return group; }
+    public GroupDTO getGroup() { return group; }
 
-    public void setGroup(Group group) { this.group = group; }
+    public void setGroup(GroupDTO group) { this.group = group; }
 
     //For testing
     @Override
     public String toString() {
-        return "Examined{" +
+        return "ExaminedDTO{" +
                 "examined_id=" + examined_id +
                 ", student_id=" + student_id +
                 ", examined_group_id=" + examined_group_id +

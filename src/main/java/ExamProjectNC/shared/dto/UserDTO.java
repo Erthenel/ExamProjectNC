@@ -1,4 +1,4 @@
-package model;
+package ExamProjectNC.shared.dto;
 
 import javax.persistence.*;
 import java.util.Set;
@@ -6,15 +6,18 @@ import java.util.Set;
 @Entity
 @Table(name="users", uniqueConstraints={@UniqueConstraint(columnNames={"user_email","user_id"})})
 
-public class User {
+public class UserDTO implements java.io.Serializable{
+
+    //used during deserialization for verifying class version and etc.
+    private static final long serialVersionUID = -8825655092866937542L;
 
     //mapping for 'exams' table
     @OneToMany(mappedBy = "user")
-    private Set<Exam> exams;
+    private Set<ExamDTO> exams;
 
     //mapping for 'examined' table
     @OneToMany(mappedBy = "user")
-    private Set<Examined> examinees;
+    private Set<ExaminedDTO> examinees;
 
     //mappings for 'users' table columns
     @Id
@@ -35,9 +38,9 @@ public class User {
     private int user_role;
 
     //Constructors
-    public User() {
+    public UserDTO() {
     }
-    public User(String user_email, String user_password, String user_fullName, int user_role) {
+    public UserDTO(String user_email, String user_password, String user_fullName, int user_role) {
         this.user_email = user_email;
         this.user_password = user_password;
         this.user_fullName = user_fullName;
@@ -85,18 +88,18 @@ public class User {
         this.user_role = user_role;
     }
 
-    public Set<Exam> getExams() { return exams; }
+    public Set<ExamDTO> getExams() { return exams; }
 
-    public void setExams(Set<Exam> exams) { this.exams = exams; }
+    public void setExams(Set<ExamDTO> exams) { this.exams = exams; }
 
-    public Set<Examined> getExaminees() { return examinees; }
+    public Set<ExaminedDTO> getExaminees() { return examinees; }
 
-    public void setExaminees(Set<Examined> examinees) { this.examinees = examinees; }
+    public void setExaminees(Set<ExaminedDTO> examinees) { this.examinees = examinees; }
 
     //For testing
     @Override
     public String toString() {
-        return "User{" +
+        return "UserDTO{" +
                 "user_id=" + user_id +
                 ", user_email=" + user_email +
                 ", user_password=" + user_password +

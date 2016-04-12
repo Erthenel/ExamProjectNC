@@ -1,15 +1,14 @@
 package main;
 
 import java.sql.Date;
-import java.sql.SQLException;
-import java.util.List;
 
+import ExamProjectNC.shared.dto.ExamDTO;
+import ExamProjectNC.shared.dto.GroupDTO;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
-import dao.*;
-import model.*;
+import ExamProjectNC.server.dao.*;
 
 /*
-Тестовый класс для ExamDAO
+Тестовый класс для ExamService
  */
 public class TestExamDAOSH {
     public static void main(String[] args) {
@@ -20,23 +19,22 @@ public class TestExamDAOSH {
 
         //тестируем методы здесь
 
-
-        Exam exam = new Exam();
+        ExamDTO exam = new ExamDTO();
         exam.setExam_subject("math");
         //текущая дата
         exam.setExam_date(new Date(new java.util.Date().getTime()));
         exam.setExam_theme("my_theme");
-        Group group = new Group();
+        GroupDTO group = new GroupDTO();
         group.setGroup_id(3);
         group.setGroup_name("third");
         /*
         exam.setGroup(group);
-        User teacher = new User();
+        UserDTO teacher = new UserDTO();
         teacher.setUser_id(1);
         exam.setTeacher(teacher);
-
         */
-        examDAO.addExam(exam);
+
+        examDAO.persist(exam);
 
 
 

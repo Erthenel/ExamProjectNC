@@ -1,23 +1,20 @@
 package main;
 
-import java.sql.Date;
-import java.sql.SQLException;
-import java.util.List;
-
-import dao.*;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
-import model.*;
 
 /*
-Тестовый класс для ExaminedDAO
+Тестовый класс для ExaminedService
  */
+
+import ExamProjectNC.server.dao.*;
+import ExamProjectNC.shared.dto.*;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 public class TestExaminedDAOSH {
 
     public static void main(String[] args) {
 
         ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("spring.xml");
 
-        ExaminedDAO examinedDAO = context.getBean(ExaminedDAO.class);
+        AbstractJpaDAO examinedDAO = context.getBean(AbstractJpaDAO.class);
 
         //тестируем методы здесь
 

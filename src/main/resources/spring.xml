@@ -20,10 +20,10 @@
         <property name="dataSource" ref="dataSource" />
         <property name="annotatedClasses">
             <list>
-                <value>model.User</value>
-                <value>model.Exam</value>
-                <value>model.Examined</value>
-                <value>model.Group</value>
+                <value>ExamProjectNC.shared.dto.UserDTO</value>
+                <value>ExamProjectNC.shared.dto.ExamDTO</value>
+                <value>ExamProjectNC.shared.dto.ExaminedDTO</value>
+                <value>ExamProjectNC.shared.dto.GroupDTO</value>
             </list>
         </property>
         <property name="hibernateProperties">
@@ -35,19 +35,23 @@
         </property>
     </bean>
 
+<!--
+    <bean id="userDAO" class="ExamProjectNC.server.dao.UserDAO">
+    </bean>
+    <bean id="examDAO" class="ExamProjectNC.server.dao.ExamDAO">
+    </bean>
+    <bean id="groupDAO" class="ExamProjectNC.server.dao.GroupDAO">
+    </bean>
+    <bean id="examinedDAO" class="ExamProjectNC.server.dao.ExaminedDAO">
+    </bean>
+-->
 
-    <bean id="userDAO" class="dao.UserDAOImpl">
-        <property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />
-    </bean>
-    <bean id="examDAO" class="dao.ExamDAOImpl">
-        <property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory"/>
-    </bean>
-    <bean id="groupDAO" class="dao.GroupDAOImpl">
-        <property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory"/>
-    </bean>
-    <bean id="examinedDAO" class="dao.ExaminedDAOImpl">
-        <property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory"/>
+    <bean class="org.springframework.orm.jpa.LocalEntityManagerFactoryBean" id="entityManagerFactory">
+        <property name="persistenceUnitName" value="ProjectPersistenceUnit" />
     </bean>
 
+    <bean class="org.springframework.orm.jpa.JpaTransactionManager" id="transactionManager">
+        <property name="entityManagerFactory" ref="entityManagerFactory" />
+    </bean>
 
 </beans>
