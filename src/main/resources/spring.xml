@@ -35,16 +35,6 @@
         </property>
     </bean>
 
-<!--
-    <bean id="userDAO" class="ExamProjectNC.server.dao.UserDAO">
-    </bean>
-    <bean id="examDAO" class="ExamProjectNC.server.dao.ExamDAO">
-    </bean>
-    <bean id="groupDAO" class="ExamProjectNC.server.dao.GroupDAO">
-    </bean>
-    <bean id="examinedDAO" class="ExamProjectNC.server.dao.ExaminedDAO">
-    </bean>
--->
 
     <bean class="org.springframework.orm.jpa.LocalEntityManagerFactoryBean" id="entityManagerFactory">
         <property name="persistenceUnitName" value="ProjectPersistenceUnit" />
@@ -52,6 +42,16 @@
 
     <bean class="org.springframework.orm.jpa.JpaTransactionManager" id="transactionManager">
         <property name="entityManagerFactory" ref="entityManagerFactory" />
+    </bean>
+
+
+    <bean id="userDAO" class="ExamProjectNC.server.dao.UserDAO">
+    </bean>
+    <bean id="examDAO" class="ExamProjectNC.server.dao.ExamDAO">
+    </bean>
+    <bean id="groupDAO" class="ExamProjectNC.server.dao.GroupDAO">
+    </bean>
+    <bean id="examinedDAO" class="ExamProjectNC.server.dao.ExaminedDAO">
     </bean>
 
 </beans>

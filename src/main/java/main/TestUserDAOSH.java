@@ -18,8 +18,8 @@ public class TestUserDAOSH {
 
         ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("spring.xml");
 
-        UserDAO userDAO = new UserDAO();
-        userDAO.setEntityManager((EntityManager) context.getBean("entityManagerFactory"));
+        UserDAO userDAO = context.getBean(UserDAO.class);
+
         //тестируем методы здесь
 
         //Тест метода save
