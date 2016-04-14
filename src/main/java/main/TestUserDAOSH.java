@@ -2,11 +2,17 @@ package main;
 
 import java.util.List;
 
+import ExamProjectNC.server.config.JPAConfig;
 import ExamProjectNC.server.dao.*;
 import ExamProjectNC.shared.dto.*;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.EntityTransaction;
+import javax.persistence.Persistence;
 
 
 /*
@@ -16,9 +22,11 @@ public class TestUserDAOSH {
 
     public static void main(String[] args) {
 
-        ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("spring.xml");
+     ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("spring.xml");
 
-        UserDAO userDAO = context.getBean(UserDAO.class);
+    ApplicationContext ctx =new AnnotationConfigApplicationContext(JPAConfig.class);
+
+        UserDAO userDAO = ctx.getBean(UserDAO.class);
 
         //тестируем методы здесь
 
@@ -44,7 +52,6 @@ public class TestUserDAOSH {
         user2.setUser_role(1);
         userDAO.persist(user2);
         userDAO.remove(user2);
-
 
        // List<UserDTO> list = userDAO.list();
 /*

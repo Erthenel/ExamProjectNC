@@ -6,6 +6,9 @@
         http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.0.xsd
         http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd">
 
+ <!--   <tx:annotation-driven />
+ -->
+
     <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
           destroy-method="close">
         <property name="driverClassName" value="org.postgresql.Driver" />
@@ -15,6 +18,7 @@
     </bean>
 
     <!-- Hibernate 4 SessionFactory Bean definition -->
+
     <bean id="hibernate4AnnotatedSessionFactory"
           class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
         <property name="dataSource" ref="dataSource" />
@@ -36,18 +40,24 @@
     </bean>
 
 
-    <bean class="org.springframework.orm.jpa.LocalEntityManagerFactoryBean" id="entityManagerFactory">
+    <bean class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean" id="entityManagerFactory">
         <property name="persistenceUnitName" value="ProjectPersistenceUnit" />
+        <property name="dataSource" ref="dataSource"/>
+        <property name="packagesToScan" value="ExamProjectNC" />
     </bean>
 
     <bean class="org.springframework.orm.jpa.JpaTransactionManager" id="transactionManager">
         <property name="entityManagerFactory" ref="entityManagerFactory" />
+
+
     </bean>
 
 
     <bean id="userDAO" class="ExamProjectNC.server.dao.UserDAO">
     </bean>
+
     <bean id="examDAO" class="ExamProjectNC.server.dao.ExamDAO">
+
     </bean>
     <bean id="groupDAO" class="ExamProjectNC.server.dao.GroupDAO">
     </bean>
