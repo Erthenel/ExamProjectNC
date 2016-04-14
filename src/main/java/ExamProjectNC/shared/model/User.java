@@ -1,4 +1,4 @@
-package ExamProjectNC.shared.models;
+package ExamProjectNC.shared.model;
 
 import javax.persistence.*;
 import java.util.Set;

@@ -1,5 +1,10 @@
 package ExamProjectNC.server.services;
 
 
-public class SchedulerServiceImpl {
+import ExamProjectNC.shared.services.SchedulerService;
+
+public class SchedulerServiceImpl implements SchedulerService{
+    public void testUserDAO() {
+        System.out.println("hello there!");
+    }
 }

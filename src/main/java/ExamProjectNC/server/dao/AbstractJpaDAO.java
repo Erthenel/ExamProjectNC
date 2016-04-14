@@ -1,10 +1,10 @@
 package ExamProjectNC.server.dao;
 
 import java.lang.reflect.ParameterizedType;
-import java.util.List;
-import javax.persistence.EntityManager;
+
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
 import org.springframework.transaction.annotation.Transactional;
-import javax.persistence.Query;
 
 public abstract class AbstractJpaDAO<K, E>  {
 
@@ -18,9 +18,9 @@ public abstract class AbstractJpaDAO<K, E>  {
     }
     @Transactional
     public void persist(E entity) {
-        getEntityManager().persist(entity);
+        getSession().persist(entity);
     }
-
+/*
     @Transactional
     public void remove(E entity) {
         getEntityManager().remove(entity);
@@ -61,7 +61,9 @@ public abstract class AbstractJpaDAO<K, E>  {
         Query query = getEntityManager().createQuery(queryStr);
         return query.executeUpdate();
     }
-
-    protected abstract EntityManager getEntityManager();
+*/
+    public abstract void setSessionFactory(SessionFactory sessionFactory);
+    public abstract SessionFactory getSessionFactory();
+    protected abstract Session getSession();
 
 }

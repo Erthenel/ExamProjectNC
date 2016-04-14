@@ -1,13 +1,7 @@
 package ExamProjectNC.server.dao;
 
-import ExamProjectNC.shared.models.*;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import ExamProjectNC.shared.model.*;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
-
-import javax.persistence.EntityManager;
-
-import static org.junit.Assert.*;
 
 
 public class AbstractJpaDAOTest {

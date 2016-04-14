@@ -24,10 +24,10 @@
         <property name="dataSource" ref="dataSource" />
         <property name="annotatedClasses">
             <list>
-                <value>ExamProjectNC.shared.models.User</value>
-                <value>ExamProjectNC.shared.models.Exam</value>
-                <value>ExamProjectNC.shared.models.Examined</value>
-                <value>ExamProjectNC.shared.models.Group</value>
+                <value>ExamProjectNC.shared.model.User</value>
+                <value>ExamProjectNC.shared.model.Exam</value>
+                <value>ExamProjectNC.shared.model.Examined</value>
+                <value>ExamProjectNC.shared.model.Group</value>
             </list>
         </property>
         <property name="hibernateProperties">
@@ -39,27 +39,23 @@
         </property>
     </bean>
 
-
-    <bean  class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean" id="entityManagerFactory">
-        <property name="persistenceUnitName" value="ProjectPersistenceUnit" />
-        <property name="dataSource" ref="dataSource"/>
-        <property name="packagesToScan" value="ExamProjectNC.server.dao" />
-    </bean>
-
-    <bean class="org.springframework.orm.jpa.JpaTransactionManager" id="transactionManager">
-        <property name="entityManagerFactory" ref="entityManagerFactory" />
-    </bean>
-
-<!--
     <bean id="userDAO" class="ExamProjectNC.server.dao.UserDAO">
+        <property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />
     </bean>
 
     <bean id="examDAO" class="ExamProjectNC.server.dao.ExamDAO">
-
+        <property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory"/>
     </bean>
     <bean id="groupDAO" class="ExamProjectNC.server.dao.GroupDAO">
+        <property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory"/>
     </bean>
     <bean id="examinedDAO" class="ExamProjectNC.server.dao.ExaminedDAO">
+        <property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory"/>
     </bean>
--->
+
+    <bean id="transactionManager" class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+        <property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory"/>
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+
 </beans>

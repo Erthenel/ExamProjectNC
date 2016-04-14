@@ -1,29 +1,34 @@
 package ExamProjectNC.server.dao;
 
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
-
-import ExamProjectNC.shared.models.*;
+import ExamProjectNC.shared.model.*;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.stereotype.Repository;
 
 @Repository("UserDAO")
-public class UserDAO extends AbstractJpaDAO<Long, User> {
+public class UserDAO extends AbstractJpaDAO<Long,User> {
 
-    @PersistenceContext(unitName = "ProjectPersistenceUnit")
-    EntityManager entityManager;
+    @Autowired
+    private SessionFactory sessionFactory;
+
 
     @Override
-    @Transactional
-    public EntityManager getEntityManager() {
-        return entityManager;
+    protected Session getSession(){
+        Session session=this.sessionFactory.getCurrentSession();
+        session.beginTransaction();
+        return this.sessionFactory.getCurrentSession();
     }
 
-    @PersistenceContext
-    @Transactional
-    public void setEntityManager(EntityManager entityManager) {
-        this.entityManager = entityManager;
+    //Getter and Setter for SessionFactory
+    @Override
+    public void setSessionFactory(SessionFactory sessionFactory) {
+        this.sessionFactory = sessionFactory;
     }
-
-
+    @Override
+    public SessionFactory getSessionFactory() {
+        return sessionFactory;
+    }
 }
