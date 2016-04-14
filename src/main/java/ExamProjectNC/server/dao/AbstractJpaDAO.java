@@ -3,10 +3,8 @@ package ExamProjectNC.server.dao;
 import java.lang.reflect.ParameterizedType;
 import java.util.List;
 import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
-import javax.persistence.PersistenceException;
+import org.springframework.transaction.annotation.Transactional;
 import javax.persistence.Query;
-import javax.transaction.Transactional;
 
 public abstract class AbstractJpaDAO<K, E>  {
 
@@ -20,7 +18,7 @@ public abstract class AbstractJpaDAO<K, E>  {
     }
     @Transactional
     public void persist(E entity) {
-        this.getEntityManager().persist(entity);
+        getEntityManager().persist(entity);
     }
 
     @Transactional

@@ -1,4 +1,4 @@
-package ExamProjectNC.shared.dto;
+package ExamProjectNC.shared.models;
 
 import javax.persistence.*;
 import java.util.Set;
@@ -6,18 +6,18 @@ import java.util.Set;
 @Entity
 @Table(name="groups", uniqueConstraints = @UniqueConstraint(columnNames={"group_id"}))
 
-public class GroupDTO implements java.io.Serializable{
+public class Group implements java.io.Serializable{
 
     //used during deserialization for verifying class version and etc.
     private static final long serialVersionUID = -7881815318423610722L;
 
     //mapping for 'exams' table
     @OneToMany(mappedBy = "group")
-    private Set<ExamDTO> exams;
+    private Set<Exam> exams;
 
     //mapping for 'examined' table
     @OneToMany(mappedBy = "group")
-    private Set<ExaminedDTO> examinees;
+    private Set<Examined> examinees;
 
     //mappings for 'groups' table columns
     @Id
@@ -29,10 +29,10 @@ public class GroupDTO implements java.io.Serializable{
     private String group_name;
 
     //Constructors
-    public GroupDTO() {
+    public Group() {
     }
 
-    public GroupDTO(String group_name) {
+    public Group(String group_name) {
         this.group_name = group_name;
     }
 
@@ -53,18 +53,18 @@ public class GroupDTO implements java.io.Serializable{
         this.group_name = group_name;
     }
 
-    public Set<ExamDTO> getExams() { return exams; }
+    public Set<Exam> getExams() { return exams; }
 
-    public void setExams(Set<ExamDTO> exams) { this.exams = exams; }
+    public void setExams(Set<Exam> exams) { this.exams = exams; }
 
-    public Set<ExaminedDTO> getExaminees() { return examinees; }
+    public Set<Examined> getExaminees() { return examinees; }
 
-    public void setExaminees(Set<ExaminedDTO> examinees) { this.examinees = examinees; }
+    public void setExaminees(Set<Examined> examinees) { this.examinees = examinees; }
 
     //For testing
     @Override
     public String toString() {
-        return "GroupDTO{" +
+        return "Group{" +
                 "group_id=" + group_id +
                 ", group_name='" + group_name + '\'' +
                 '}';

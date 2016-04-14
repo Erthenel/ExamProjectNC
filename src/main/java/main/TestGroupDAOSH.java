@@ -6,7 +6,7 @@ package main;
  */
 
 import ExamProjectNC.server.dao.*;
-import ExamProjectNC.shared.dto.*;
+import ExamProjectNC.shared.models.*;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 public class TestGroupDAOSH {
 

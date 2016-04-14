@@ -1,4 +1,4 @@
-package ExamProjectNC.shared.dto;
+package ExamProjectNC.shared.models;
 
 import javax.persistence.*;
 import java.sql.Date;
@@ -7,7 +7,7 @@ import java.sql.Date;
 @Entity
 @Table(name="exams", uniqueConstraints = @UniqueConstraint(columnNames={"exam_id"}))
 
-public class ExamDTO implements java.io.Serializable {
+public class Exam implements java.io.Serializable {
 
     //used during deserialization for verifying class version and etc.
     private static final long serialVersionUID = 95293705767839389L;
@@ -17,14 +17,14 @@ public class ExamDTO implements java.io.Serializable {
     @JoinColumn(name = "user_id",
             foreignKey = @ForeignKey(name = "EXAM_TO_USER_ID_FK")
     )
-    private UserDTO user;
+    private User user;
 
     //mapping for 'groups' table
     @ManyToOne
     @JoinColumn(name = "group_id",
             foreignKey = @ForeignKey(name = "EXAM_TO_GROUP_ID_FK")
     )
-    private GroupDTO group;
+    private Group group;
 
     //mappings for 'exam' table columns
     @Id
@@ -48,10 +48,10 @@ public class ExamDTO implements java.io.Serializable {
     private String exam_subject;
 
     //Constructors
-    public ExamDTO() {
+    public Exam() {
     }
 
-    public ExamDTO(int teacher_id, int group_id, String exam_theme, Date exam_date, String exam_subject) {
+    public Exam(int teacher_id, int group_id, String exam_theme, Date exam_date, String exam_subject) {
         this.teacher_id = teacher_id;
         this.exam_group_id = group_id;
         this.exam_theme = exam_theme;
@@ -60,9 +60,9 @@ public class ExamDTO implements java.io.Serializable {
     }
 
     //Getters and Setters
-    public UserDTO getUser() { return user; }
+    public User getUser() { return user; }
 
-    public void setUser(UserDTO user) { this.user = user; }
+    public void setUser(User user) { this.user = user; }
 
     public int getExam_id() {
         return exam_id;
@@ -108,14 +108,14 @@ public class ExamDTO implements java.io.Serializable {
 
     public void setExam_group_id(int exam_group_id) { this.exam_group_id = exam_group_id; }
 
-    public GroupDTO getGroup() { return group; }
+    public Group getGroup() { return group; }
 
-    public void setGroup(GroupDTO group) { this.group = group; }
+    public void setGroup(Group group) { this.group = group; }
 
     //For testing
     @Override
     public String toString() {
-        return "ExamDTO{" +
+        return "Exam{" +
                 "exam_id=" + exam_id +
                 ", teacher=" + teacher_id +
                 ", group=" + exam_group_id +

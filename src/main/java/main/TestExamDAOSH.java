@@ -2,8 +2,7 @@ package main;
 
 import java.sql.Date;
 
-import ExamProjectNC.shared.dto.ExamDTO;
-import ExamProjectNC.shared.dto.GroupDTO;
+import ExamProjectNC.shared.models.*;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import ExamProjectNC.server.dao.*;
 
@@ -19,12 +18,12 @@ public class TestExamDAOSH {
 
         //тестируем методы здесь
 
-        ExamDTO exam = new ExamDTO();
+        Exam exam = new Exam();
         exam.setExam_subject("math");
         //текущая дата
         exam.setExam_date(new Date(new java.util.Date().getTime()));
         exam.setExam_theme("my_theme");
-        GroupDTO group = new GroupDTO();
+        Group group = new Group();
         group.setGroup_id(3);
         group.setGroup_name("third");
         /*

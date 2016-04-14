@@ -6,8 +6,8 @@
         http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.0.xsd
         http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd">
 
- <!--   <tx:annotation-driven />
- -->
+    <tx:annotation-driven />
+
 
     <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
           destroy-method="close">
@@ -24,10 +24,10 @@
         <property name="dataSource" ref="dataSource" />
         <property name="annotatedClasses">
             <list>
-                <value>ExamProjectNC.shared.dto.UserDTO</value>
-                <value>ExamProjectNC.shared.dto.ExamDTO</value>
-                <value>ExamProjectNC.shared.dto.ExaminedDTO</value>
-                <value>ExamProjectNC.shared.dto.GroupDTO</value>
+                <value>ExamProjectNC.shared.models.User</value>
+                <value>ExamProjectNC.shared.models.Exam</value>
+                <value>ExamProjectNC.shared.models.Examined</value>
+                <value>ExamProjectNC.shared.models.Group</value>
             </list>
         </property>
         <property name="hibernateProperties">
@@ -40,19 +40,17 @@
     </bean>
 
 
-    <bean class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean" id="entityManagerFactory">
+    <bean  class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean" id="entityManagerFactory">
         <property name="persistenceUnitName" value="ProjectPersistenceUnit" />
         <property name="dataSource" ref="dataSource"/>
-        <property name="packagesToScan" value="ExamProjectNC" />
+        <property name="packagesToScan" value="ExamProjectNC.server.dao" />
     </bean>
 
     <bean class="org.springframework.orm.jpa.JpaTransactionManager" id="transactionManager">
         <property name="entityManagerFactory" ref="entityManagerFactory" />
-
-
     </bean>
 
-
+<!--
     <bean id="userDAO" class="ExamProjectNC.server.dao.UserDAO">
     </bean>
 
@@ -63,5 +61,5 @@
     </bean>
     <bean id="examinedDAO" class="ExamProjectNC.server.dao.ExaminedDAO">
     </bean>
-
+-->
 </beans>

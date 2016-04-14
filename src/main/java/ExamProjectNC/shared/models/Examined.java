@@ -1,4 +1,4 @@
-package ExamProjectNC.shared.dto;
+package ExamProjectNC.shared.models;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
@@ -6,7 +6,7 @@ import java.sql.Timestamp;
 @Entity
 @Table(name="examined", uniqueConstraints = @UniqueConstraint(columnNames={"examined_id"}))
 
-public class ExaminedDTO implements java.io.Serializable {
+public class Examined implements java.io.Serializable {
 
     //used during deserialization for verifying class version and etc.
     private static final long serialVersionUID = 6337148546446600161L;
@@ -15,13 +15,13 @@ public class ExaminedDTO implements java.io.Serializable {
     @ManyToOne
     @JoinColumn(name = "user_id",
             foreignKey = @ForeignKey(name = "EXAMINED_TO_USER_ID_FK"))
-    private UserDTO user;
+    private User user;
 
     //mapping for 'groups' table
     @ManyToOne
     @JoinColumn(name = "group_id",
             foreignKey = @ForeignKey(name = "EXAMINED_TO_GROUP_ID_FK"))
-    private GroupDTO group;
+    private Group group;
 
     //mappings for 'examined' table columns
     @Id
@@ -42,10 +42,10 @@ public class ExaminedDTO implements java.io.Serializable {
     private Timestamp examined_answer_time;
 
     //Constructors
-    public ExaminedDTO() {
+    public Examined() {
     }
 
-    public ExaminedDTO(int student_id, int examined_group_id, float examined_mark, Timestamp examined_answer_time) {
+    public Examined(int student_id, int examined_group_id, float examined_mark, Timestamp examined_answer_time) {
         this.student_id = student_id;
         this.examined_group_id = examined_group_id;
         this.examined_mark = examined_mark;
@@ -91,18 +91,18 @@ public class ExaminedDTO implements java.io.Serializable {
 
     public void setExamined_answer_time(Timestamp examined_answer_time) { this.examined_answer_time = examined_answer_time; }
 
-    public UserDTO getUser() { return user; }
+    public User getUser() { return user; }
 
-    public void setUser(UserDTO user) { this.user = user; }
+    public void setUser(User user) { this.user = user; }
 
-    public GroupDTO getGroup() { return group; }
+    public Group getGroup() { return group; }
 
-    public void setGroup(GroupDTO group) { this.group = group; }
+    public void setGroup(Group group) { this.group = group; }
 
     //For testing
     @Override
     public String toString() {
-        return "ExaminedDTO{" +
+        return "Examined{" +
                 "examined_id=" + examined_id +
                 ", student_id=" + student_id +
                 ", examined_group_id=" + examined_group_id +

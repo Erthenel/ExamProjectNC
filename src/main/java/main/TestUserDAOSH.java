@@ -2,9 +2,9 @@ package main;
 
 import java.util.List;
 
-import ExamProjectNC.server.config.JPAConfig;
 import ExamProjectNC.server.dao.*;
-import ExamProjectNC.shared.dto.*;
+
+import ExamProjectNC.shared.models.User;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -24,9 +24,9 @@ public class TestUserDAOSH {
 
      ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("spring.xml");
 
-    ApplicationContext ctx =new AnnotationConfigApplicationContext(JPAConfig.class);
+   // ApplicationContext ctx =new AnnotationConfigApplicationContext(JPAConfig.class);
 
-        UserDAO userDAO = ctx.getBean(UserDAO.class);
+        UserDAO userDAO = context.getBean(UserDAO.class);
 
         //тестируем методы здесь
 
@@ -45,7 +45,7 @@ public class TestUserDAOSH {
         user_new.setUser_password("Password");
         user_new.setUser_role(1);
         userDAO.save(user_new); */
-        UserDTO user2 = new UserDTO();
+        User user2 = new User();
         user2.setUser_fullName("Roman Smirnov");
         user2.setUser_email("email2@mail.ru");
         user2.setUser_password("Password2");

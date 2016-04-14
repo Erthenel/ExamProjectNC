@@ -1,4 +1,4 @@
-package ExamProjectNC.shared.dto;
+package ExamProjectNC.shared.models;
 
 import javax.persistence.*;
 import java.util.Set;
@@ -6,18 +6,18 @@ import java.util.Set;
 @Entity
 @Table(name="users", uniqueConstraints={@UniqueConstraint(columnNames={"user_email","user_id"})})
 
-public class UserDTO implements java.io.Serializable{
+public class User implements java.io.Serializable{
 
     //used during deserialization for verifying class version and etc.
     private static final long serialVersionUID = -8825655092866937542L;
 
     //mapping for 'exams' table
     @OneToMany(mappedBy = "user")
-    private Set<ExamDTO> exams;
+    private Set<Exam> exams;
 
     //mapping for 'examined' table
     @OneToMany(mappedBy = "user")
-    private Set<ExaminedDTO> examinees;
+    private Set<Examined> examinees;
 
     //mappings for 'users' table columns
     @Id
@@ -38,9 +38,9 @@ public class UserDTO implements java.io.Serializable{
     private int user_role;
 
     //Constructors
-    public UserDTO() {
+    public User() {
     }
-    public UserDTO(String user_email, String user_password, String user_fullName, int user_role) {
+    public User(String user_email, String user_password, String user_fullName, int user_role) {
         this.user_email = user_email;
         this.user_password = user_password;
         this.user_fullName = user_fullName;
@@ -88,18 +88,18 @@ public class UserDTO implements java.io.Serializable{
         this.user_role = user_role;
     }
 
-    public Set<ExamDTO> getExams() { return exams; }
+    public Set<Exam> getExams() { return exams; }
 
-    public void setExams(Set<ExamDTO> exams) { this.exams = exams; }
+    public void setExams(Set<Exam> exams) { this.exams = exams; }
 
-    public Set<ExaminedDTO> getExaminees() { return examinees; }
+    public Set<Examined> getExaminees() { return examinees; }
 
-    public void setExaminees(Set<ExaminedDTO> examinees) { this.examinees = examinees; }
+    public void setExaminees(Set<Examined> examinees) { this.examinees = examinees; }
 
     //For testing
     @Override
     public String toString() {
-        return "UserDTO{" +
+        return "User{" +
                 "user_id=" + user_id +
                 ", user_email=" + user_email +
                 ", user_password=" + user_password +
