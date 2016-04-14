@@ -18,7 +18,7 @@ public class UserDAO extends AbstractJpaDAO<Long,User> {
     @Override
     protected Session getSession(){
         Session session=this.sessionFactory.getCurrentSession();
-        session.beginTransaction();
+        if (!session.getTransaction().isActive()) session.beginTransaction();
         return this.sessionFactory.getCurrentSession();
     }
 

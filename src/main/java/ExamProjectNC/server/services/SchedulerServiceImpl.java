@@ -2,9 +2,25 @@ package ExamProjectNC.server.services;
 
 
 import ExamProjectNC.shared.services.SchedulerService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import ExamProjectNC.server.dao.*;
 
+@Service("schedulerService")
 public class SchedulerServiceImpl implements SchedulerService{
-    public void testUserDAO() {
+    @Autowired
+    UserDAO userDAO;
+
+    @Autowired
+    GroupDAO groupDAO;
+
+    @Autowired
+    ExamDAO examDAO;
+
+    @Autowired
+    ExaminedDAO examinedDAO;
+
+    public void test() {
         System.out.println("hello there!");
     }
 }
