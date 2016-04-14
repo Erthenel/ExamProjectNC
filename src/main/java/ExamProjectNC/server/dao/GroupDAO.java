@@ -28,10 +28,10 @@ public class GroupDAO extends AbstractJpaDAO<Long, Group> {
     }
 
     @Override
-    @Transactional
     protected Session getSession(){
+        Session session=this.sessionFactory.getCurrentSession();
+        if (!session.getTransaction().isActive()) session.beginTransaction();
         return this.sessionFactory.getCurrentSession();
     }
-
 
 }

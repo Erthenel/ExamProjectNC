@@ -14,21 +14,20 @@ public class UserDAO extends AbstractJpaDAO<Long,User> {
     @Autowired
     private SessionFactory sessionFactory;
 
+    @Override
+    public void setSessionFactory(SessionFactory sessionFactory) {
+        this.sessionFactory = sessionFactory;
+    }
+
+    @Override
+    public SessionFactory getSessionFactory() {
+        return sessionFactory;
+    }
 
     @Override
     protected Session getSession(){
         Session session=this.sessionFactory.getCurrentSession();
         if (!session.getTransaction().isActive()) session.beginTransaction();
         return this.sessionFactory.getCurrentSession();
-    }
-
-    //Getter and Setter for SessionFactory
-    @Override
-    public void setSessionFactory(SessionFactory sessionFactory) {
-        this.sessionFactory = sessionFactory;
-    }
-    @Override
-    public SessionFactory getSessionFactory() {
-        return sessionFactory;
     }
 }
