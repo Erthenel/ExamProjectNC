@@ -1,8 +1,5 @@
 package ExamProjectNC.server.dao;
-
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
-import ExamProjectNC.shared.model.*;
+import ExamProjectNC.shared.model.Group;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,7 +9,6 @@ import org.springframework.transaction.annotation.Transactional;
 @Repository("GroupDAO")
 public class GroupDAO extends AbstractJpaDAO<Long, Group> {
 
-    @Autowired
     private SessionFactory sessionFactory;
 
     @Override
@@ -35,3 +31,4 @@ public class GroupDAO extends AbstractJpaDAO<Long, Group> {
     }
 
 }
+

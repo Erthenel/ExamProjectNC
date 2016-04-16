@@ -1,7 +1,7 @@
 package ExamProjectNC.server.services;
 
-
-import ExamProjectNC.shared.services.SchedulerService;
+/*
+import ExamProjectNC.client.SchedulerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ExamProjectNC.server.dao.*;
@@ -24,3 +24,4 @@ public class SchedulerServiceImpl implements SchedulerService{
         System.out.println("hello there!");
     }
 }
+*/

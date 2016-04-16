@@ -1,4 +1,4 @@
-package ExamProjectNC.shared.services;
+package ExamProjectNC.client;
 
 public interface SchedulerService {
     void test();

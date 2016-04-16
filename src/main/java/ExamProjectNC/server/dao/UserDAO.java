@@ -1,17 +1,15 @@
-package ExamProjectNC.server.dao;
 
-import ExamProjectNC.shared.model.*;
+package ExamProjectNC.server.dao;
+import ExamProjectNC.shared.model.User;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 @Repository("UserDAO")
 public class UserDAO extends AbstractJpaDAO<Long,User> {
 
-    @Autowired
     private SessionFactory sessionFactory;
 
     @Override
@@ -30,4 +28,5 @@ public class UserDAO extends AbstractJpaDAO<Long,User> {
         if (!session.getTransaction().isActive()) session.beginTransaction();
         return this.sessionFactory.getCurrentSession();
     }
+
 }

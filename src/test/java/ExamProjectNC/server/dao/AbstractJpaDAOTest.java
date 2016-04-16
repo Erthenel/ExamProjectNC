@@ -1,18 +1,17 @@
 package ExamProjectNC.server.dao;
 
+
 import ExamProjectNC.shared.model.*;
-import org.hibernate.annotations.SourceType;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import java.util.List;
 
-
 public class AbstractJpaDAOTest {
     ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("spring.xml");
     UserDAO userDAO = context.getBean(UserDAO.class);
+
     /*
-    Test for adding values in a 'user' table
-     */
+    Test for adding values in a 'user' table*/
     @org.junit.Test
     public void persist() throws Exception {
         User user = new User();
@@ -27,6 +26,7 @@ public class AbstractJpaDAOTest {
     /*
     Test for removing values from the 'user' table
      */
+
     @org.junit.Test
     public void delete() throws Exception {
         User user = new User();

@@ -41,7 +41,7 @@
     <bean id="userDAO" class="ExamProjectNC.server.dao.UserDAO">
         <property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />
     </bean>
-
+<!--
     <bean id="examDAO" class="ExamProjectNC.server.dao.ExamDAO">
         <property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory"/>
     </bean>
@@ -56,5 +56,5 @@
         <property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory"/>
         <property name="dataSource" ref="dataSource"/>
     </bean>
-
+    -->
 </beans>

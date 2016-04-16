@@ -1,4 +1,4 @@
-package ExamProjectNC.server.services;
+/*package ExamProjectNC.server.services;
 
 import ExamProjectNC.server.dao.UserDAO;
 import ExamProjectNC.shared.model.User;
@@ -28,3 +28,4 @@ public class SchedulerServiceImplTest {
     }
 
 }
+*/

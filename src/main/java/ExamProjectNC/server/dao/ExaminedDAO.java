@@ -1,9 +1,5 @@
 package ExamProjectNC.server.dao;
-
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
 import ExamProjectNC.shared.model.Examined;
-import ExamProjectNC.shared.model.User;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +9,6 @@ import org.springframework.transaction.annotation.Transactional;
 @Repository("ExaminedDAO")
 public class ExaminedDAO extends AbstractJpaDAO<Long, Examined> {
 
-    @Autowired
     private SessionFactory sessionFactory;
 
     @Override
