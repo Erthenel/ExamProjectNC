@@ -9,7 +9,7 @@ import com.google.gwt.user.client.ui.*;
 
 public class GWTSpring implements EntryPoint {
 
-    private TestServiceAsync testService = GWT.create(TestService.class);
+   private TestServiceAsync testService = GWT.create(TestService.class);
 
     private TextBox nameTextBox = new TextBox();
     private Label greetingLabel = new Label("Hello, GWT!");
@@ -17,7 +17,6 @@ public class GWTSpring implements EntryPoint {
     public void onModuleLoad() {
         RootPanel.get().add(nameTextBox);
         RootPanel.get().add(greetingLabel);
-
 
 
         final AsyncCallback<String> callback = new AsyncCallback<String>() {
@@ -35,6 +34,8 @@ public class GWTSpring implements EntryPoint {
                 testService.greet(nameTextBox.getText(), callback);
             }
         });
+
+
 
     }
 }
