@@ -129,6 +129,8 @@
             <groupId>com.google.code</groupId>
             <artifactId>spring4gwt</artifactId>
             <version>${spring4gwt.version}</version>
+            <scope>system</scope>
+            <systemPath>${basedir}/src/main/webapp/WEB-INF/lib/spring4gwt-0.0.1.jar</systemPath>
         </dependency>
 
 

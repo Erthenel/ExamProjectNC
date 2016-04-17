@@ -1,8 +1,12 @@
-/*
+
 package ExamProjectNC.client;
 
-public interface SchedulerService {
-    void test();
+import ExamProjectNC.shared.model.User;
+import com.google.gwt.user.client.rpc.RemoteService;
+import com.google.gwt.user.client.rpc.RemoteServiceRelativePath;
+
+@RemoteServiceRelativePath("springGwtServices/testService")
+public interface SchedulerService extends RemoteService {
+    void test(User user);
 }
 
-*/
