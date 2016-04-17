@@ -1,4 +1,4 @@
-package ExamProjectNC.server.services;
+package ExamProjectNC.server;
 
 /*
 import ExamProjectNC.client.SchedulerService;
