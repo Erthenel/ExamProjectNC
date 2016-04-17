@@ -14,13 +14,14 @@ public class AbstractJpaDAOTest {
     Test for adding values in a 'user' table*/
     @org.junit.Test
     public void persist() throws Exception {
-        User user = new User();
+        /*User user = new User();
         user.setUser_fullName("Roman Smirnov");
         user.setUser_email("email2@mail.ru");
         user.setUser_password("Password2");
         user.setUser_role(1);
         userDAO.persist(user);
         System.out.println("and the user is "+userDAO.findById(3).getUser_fullName());
+        System.out.println(1);*/
     }
 
     /*
@@ -35,6 +36,7 @@ public class AbstractJpaDAOTest {
         user.setUser_password("Password2");
         user.setUser_role(1);
         userDAO.delete(user);
+        System.out.println(2);
 
     }
     @org.junit.Test
@@ -48,11 +50,13 @@ public class AbstractJpaDAOTest {
         user.setUser_role(1);
         user.setUser_fullName("Roman Smirnov");
         userDAO.update(user);
+        System.out.println(3);
     }
 
     @org.junit.Test
     public void findById() throws Exception {
         System.out.println("and the user is "+userDAO.findById(1).getUser_fullName());
+        System.out.println(4);
     }
 
     @org.junit.Test
@@ -60,12 +64,14 @@ public class AbstractJpaDAOTest {
         List<User> list=userDAO.findAll();
         for (User user:list) {
             System.out.println(user.toString());
+            System.out.println(5);
         }
 
     }
     @org.junit.Test
     public void deleteAll() throws Exception {
         System.out.println("Result of deleting "+userDAO.deleteAll());
+        System.out.println(6);
     }
 
 }

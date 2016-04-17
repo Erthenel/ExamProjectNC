@@ -1,7 +1,7 @@
 
 package ExamProjectNC.server;
 
-import ExamProjectNC.client.TestService;
+import ExamProjectNC.client.RegisterUserService;
 import ExamProjectNC.server.dao.UserDAO;
 import ExamProjectNC.shared.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,17 +9,13 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.stereotype.Service;
 
 
-@Service("testService")
-public class TestServiceImpl implements TestService {
+@Service("registerUserService")
+public class RegisterUserServiceImpl implements RegisterUserService {
 
     @Autowired
     private UserDAO userDAO;
 
-    public String greet(String name) {
-        return "Hello, " + name + "!";
-    }
-
-    public void test(User user) {
+    public void register(User user) {
         ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("spring.xml");
 
         UserDAO userDAO = context.getBean(UserDAO.class);
