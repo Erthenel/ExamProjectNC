@@ -1,4 +1,4 @@
-package model;
+package ExamProjectNC.shared.model;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
@@ -6,7 +6,10 @@ import java.sql.Timestamp;
 @Entity
 @Table(name="examined", uniqueConstraints = @UniqueConstraint(columnNames={"examined_id"}))
 
-public class Examined {
+public class Examined implements java.io.Serializable {
+
+    //used during deserialization for verifying class version and etc.
+    private static final long serialVersionUID = 6337148546446600161L;
 
     //mapping for 'users' table
     @ManyToOne

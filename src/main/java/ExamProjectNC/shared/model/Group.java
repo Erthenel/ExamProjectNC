@@ -1,4 +1,4 @@
-package model;
+package ExamProjectNC.shared.model;
 
 import javax.persistence.*;
 import java.util.Set;
@@ -6,7 +6,10 @@ import java.util.Set;
 @Entity
 @Table(name="groups", uniqueConstraints = @UniqueConstraint(columnNames={"group_id"}))
 
-public class Group {
+public class Group implements java.io.Serializable{
+
+    //used during deserialization for verifying class version and etc.
+    private static final long serialVersionUID = -7881815318423610722L;
 
     //mapping for 'exams' table
     @OneToMany(mappedBy = "group")

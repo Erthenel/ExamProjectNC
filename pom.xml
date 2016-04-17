@@ -4,11 +4,10 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>org.netcracker.examproject</groupId>
+    <groupId>org.netcracker</groupId>
     <artifactId>ExamProjectNC</artifactId>
     <version>1.0-SNAPSHOT</version>
-
-
+    <packaging>war</packaging>
     <properties>
 
         <!-- Generic properties -->
@@ -21,9 +20,16 @@
 
         <!-- Hibernate / JPA -->
       <hibernate.version>4.3.5.Final</hibernate.version>
+
         <!-- Logging -->
         <logback.version>1.0.13</logback.version>
         <slf4j.version>1.7.5</slf4j.version>
+        <log4j.version>1.2.17</log4j.version>
+
+        <!--GWT-->
+        <gwt.version>2.7.0</gwt.version>
+        <spring4gwt.version>0.0.1</spring4gwt.version>
+
 
     </properties>
 
@@ -34,6 +40,7 @@
             <artifactId>spring-context</artifactId>
             <version>${spring-framework.version}</version>
         </dependency>
+
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-tx</artifactId>
@@ -47,6 +54,13 @@
             <version>${spring-framework.version}</version>
         </dependency>
 
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-webmvc</artifactId>
+            <version>${spring-framework.version}</version>
+        </dependency>
+
+
         <!-- Logging with SLF4J & LogBack -->
         <dependency>
             <groupId>org.slf4j</groupId>
@@ -54,6 +68,7 @@
             <version>${slf4j.version}</version>
             <scope>compile</scope>
         </dependency>
+
         <dependency>
             <groupId>ch.qos.logback</groupId>
             <artifactId>logback-classic</artifactId>
@@ -67,6 +82,7 @@
             <artifactId>hibernate-entitymanager</artifactId>
             <version>${hibernate.version}</version>
         </dependency>
+
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-core</artifactId>
@@ -78,11 +94,45 @@
             <artifactId>postgresql</artifactId>
             <version>9.1-901.jdbc4</version>
         </dependency>
+
         <dependency>
             <groupId>commons-dbcp</groupId>
             <artifactId>commons-dbcp</artifactId>
             <version>1.4</version>
         </dependency>
+
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.12</version>
+            <scope>Test</scope>
+        </dependency>
+
+        <!--GWT-->
+        <dependency>
+            <groupId>com.google.gwt</groupId>
+            <artifactId>gwt-servlet</artifactId>
+            <version>${gwt.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.google.gwt</groupId>
+            <artifactId>gwt-user</artifactId>
+            <version>${gwt.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>log4j</groupId>
+            <artifactId>log4j</artifactId>
+            <version>${log4j.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.google.code</groupId>
+            <artifactId>spring4gwt</artifactId>
+            <version>${spring4gwt.version}</version>
+        </dependency>
+
+
+
     </dependencies>
 
     <build>
@@ -98,7 +148,24 @@
                     </descriptors>
                 </configuration>
             </plugin>
-        </plugins>
+
+        <plugin>
+            <groupId>org.codehaus.mojo</groupId>
+            <artifactId>gwt-maven-plugin</artifactId>
+            <version>${gwt.version}</version>
+            <executions>
+                <execution>
+                    <goals>
+                        <goal>compile</goal>
+                        <goal>test</goal>
+                    </goals>
+                </execution>
+            </executions>
+        </plugin>
+
+    </plugins>
+
+        <finalName>ExamProjectNC</finalName>
     </build>
 
 </project>

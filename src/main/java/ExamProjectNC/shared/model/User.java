@@ -1,4 +1,4 @@
-package model;
+package ExamProjectNC.shared.model;
 
 import javax.persistence.*;
 import java.util.Set;
@@ -6,7 +6,10 @@ import java.util.Set;
 @Entity
 @Table(name="users", uniqueConstraints={@UniqueConstraint(columnNames={"user_email","user_id"})})
 
-public class User {
+public class User implements java.io.Serializable{
+
+    //used during deserialization for verifying class version and etc.
+    private static final long serialVersionUID = -8825655092866937542L;
 
     //mapping for 'exams' table
     @OneToMany(mappedBy = "user")
