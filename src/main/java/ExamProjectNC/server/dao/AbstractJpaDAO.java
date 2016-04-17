@@ -21,6 +21,7 @@ public abstract class AbstractJpaDAO<K, E>  {
     @Transactional
     public void persist(E entity) {
         getSession().persist(entity);
+        getSession().close();
     }
 
     @Transactional
