@@ -20,7 +20,6 @@ public class RegisterUserServiceImpl implements RegisterUserService {
 
         UserDAO userDAO = context.getBean(UserDAO.class);
         userDAO.persist(user);
-        System.out.println(userDAO.findById(1));
         context.close();
 
     }

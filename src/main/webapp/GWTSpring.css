@@ -1,1 +1,12 @@
+h1 {
+    margin: 50px 90px 0;
+}
 
+.form {
+    margin: 20px 50px;
+    padding: 10px 40px;
+}
+
+.form div, .form input, .form button {
+    margin: 5px 0;
+}

@@ -4,10 +4,10 @@
 
 <module rename-to="GWTSpring">
     <inherits name='com.google.gwt.user.User'/>
-    <!--    <inherits name='com.google.gwt.user.theme.standard.Standard'/>-->
-     <inherits name='com.google.gwt.user.theme.dark.Dark'/>
-      <source path='client'/>
-      <source path='shared'/>
-      <entry-point class='ExamProjectNC.client.GWTSpring'/>
+    <inherits name='com.google.gwt.user.theme.chrome.Chrome'/>
+    <!--    <inherits name='com.google.gwt.user.theme.dark.Dark'/>-->
+     <source path='client'/>
+     <source path='shared'/>
+     <entry-point class='ExamProjectNC.client.GWTSpring'/>
 
-  </module>
+ </module>
