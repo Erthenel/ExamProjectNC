@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 
 @Service("registerUserService")
 public class RegisterUserServiceImpl implements RegisterUserService {
@@ -15,12 +17,15 @@ public class RegisterUserServiceImpl implements RegisterUserService {
     @Autowired
     private UserDAO userDAO;
 
-    public void register(User user) {
-        ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("spring.xml");
+    public List<String> register(User user) {
 
-        UserDAO userDAO = context.getBean(UserDAO.class);
-        userDAO.persist(user);
-        context.close();
-
+        UniversalFieldVerifier ufv = new UniversalFieldVerifier();
+        if (ufv.verify(user).isEmpty()) {
+            ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("spring.xml");
+            UserDAO userDAO = context.getBean(UserDAO.class);
+            userDAO.persist(user);
+            context.close();
+        }
+        return ufv.verify(user);
     }
 }
