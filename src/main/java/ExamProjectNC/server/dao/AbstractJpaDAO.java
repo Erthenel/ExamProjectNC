@@ -27,11 +27,13 @@ public abstract class AbstractJpaDAO<K, E>  {
     @Transactional
     public void delete(E entity) {
         getSession().delete(entity);
+        getSession().close();
     }
 
     @Transactional
     public void update(E entity) {
         getSession().update(entity);
+        getSession().close();
     }
 
     /*
@@ -86,7 +88,9 @@ public abstract class AbstractJpaDAO<K, E>  {
     public Integer deleteAll() {
         String queryStr = "DELETE FROM " + entityClass.getName() + " h";
         Query query = getSession().createQuery(queryStr);
-        return query.executeUpdate();
+        Integer ans=query.executeUpdate();
+        getSession().close();
+        return ans;
     }
 
     public abstract void setSessionFactory(SessionFactory sessionFactory);

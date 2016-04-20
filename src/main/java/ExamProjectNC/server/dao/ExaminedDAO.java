@@ -27,6 +27,7 @@ public class ExaminedDAO extends AbstractJpaDAO<Long, Examined> {
     protected Session getSession(){
         Session session=this.sessionFactory.getCurrentSession();
         if (!session.getTransaction().isActive()) session.beginTransaction();
+        else session.getTransaction().commit();
         return this.sessionFactory.getCurrentSession();
     }
 

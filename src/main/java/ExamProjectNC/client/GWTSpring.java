@@ -30,7 +30,7 @@ public class GWTSpring implements EntryPoint {
     private RadioButton radio1 = new RadioButton("radioGroup", "Teacher");
     private RadioButton radio2 = new RadioButton("radioGroup", "Student");
     private VerticalPanel verticalPanel = new VerticalPanel();
-    private Button button = new Button("Log in");
+    private Button button = new Button("Sign me up!");
 
 
     public void onModuleLoad() {
@@ -59,6 +59,7 @@ public class GWTSpring implements EntryPoint {
 
             public void onSuccess(Void aVoid) {
                 Window.alert("Registration successfully completed");
+                Window.Location.replace("\\GWTSpring\\happyRegistry");
             }
         };
 
