@@ -20,13 +20,13 @@ public class UniversalFieldVerifier<E> {
             User user = (User)entity;
 
             //email test: check for '@' and dots
-            if (!user.getUser_email().matches("^[-a-z0-9!#$%&'*+/=?^_`{|}~]+(?:\\.[-a-z0-9!#$%&'*+/=?^_`{|}~]+)*@(?:[a-z0-9]([-a-z0-9]{0,61}[a-z0-9])?\\.)*(?:aero|arpa|asia|biz|cat|com|coop|edu|gov|info|int|jobs|mil|mobi|museum|name|net|org|pro|tel|travel|[a-z][a-z])$")) list.add("Check your Email address. It seems to be wrong.");
+            if (!user.getUser_email().matches("^[-a-z0-9!#$%&'*+/=?^_`{|}~]+(?:\\.[-a-z0-9!#$%&'*+/=?^_`{|}~]+)*@(?:[a-z0-9]([-a-z0-9]{0,61}[a-z0-9])?\\.)*(?:aero|arpa|asia|biz|cat|com|coop|edu|gov|info|int|jobs|mil|mobi|museum|name|net|org|pro|tel|travel|[a-z][a-z])$")) list.add("Your email is wrong.");
 
             //user Name and Surname test
            tmp2=user.getUser_fullName().split(" ");
             if (tmp2.length>1) {
                 if (!tmp2[0].trim().matches("[A-Za-zА-Яа-я]{2,20}"))
-                    list.add("Name field consists of restricted symbols.");
+                    list.add("Name consists of restricted symbols.");
                 if (tmp2[0].trim().length() > 20)
                     list.add("Your name is abnormally too long!");
                 if (!tmp2[1].trim().matches("[A-Za-zА-Яа-я]{2,20}"))
