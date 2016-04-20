@@ -20,14 +20,20 @@ public class UniversalFieldVerifier<E> {
             User user = (User)entity;
 
             //email test: check for '@' and dots
-            if (!user.getUser_email().matches("/.+@.+\\..+/i")) list.add("Check your Email address. It seems to be wrong.");
+            //if (!user.getUser_email().matches("/.+@.+\\..+/i")) list.add("Check your Email address. It seems to be wrong.");
 
             //user Name and Surname test
            tmp2=user.getUser_fullName().split(" ");
-            if (!tmp2[0].trim().matches("[A-Za-zА-Яа-я]{2,20}")) list.add("Error in your Name. Only letters are allowed.");
-            if (tmp2[0].trim().length()>20) list.add("Error in your Name. It's too long. No more than 20 letters.");
-            if (!tmp2[1].trim().matches("[A-Za-zА-Яа-я]{2,20}")) list.add("Error in your Surname. Only letters are allowed.");
-            if (tmp2[1].trim().length()>20) list.add("Error in your Surname. It's too long. No more than 20 letters.");
+            if (tmp2.length>1) {
+                if (!tmp2[0].trim().matches("[A-Za-zА-Яа-я]{2,20}"))
+                    list.add("Error in your Name. Only letters are allowed.");
+                if (tmp2[0].trim().length() > 20)
+                    list.add("Error in your Name. It's too long. No more than 20 letters.");
+                if (!tmp2[1].trim().matches("[A-Za-zА-Яа-я]{2,20}"))
+                    list.add("Error in your Surname. Only letters are allowed.");
+                if (tmp2[1].trim().length() > 20)
+                    list.add("Error in your Surname. It's too long. No more than 20 letters.");
+            }
 
             //password test ? screening candidate x1
             if ((user.getUser_password().length()>30))  list.add("Error in your Password. No more than 30 symbols are allowed");

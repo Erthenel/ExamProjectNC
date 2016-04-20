@@ -20,13 +20,14 @@ public class GWTSpring implements EntryPoint {
 
     private RegisterUserServiceAsync registerUserService = GWT.create(RegisterUserService.class);
 
+    private Label titleLabel=new Label("Registration");
     private Label labelName = new Label("Enter your Name");
     private Label labelSurname = new Label("Enter your Surname");
     private TextBox userName = new TextBox();
     private TextBox userSurname = new TextBox();
     private Label labelUserPassword = new Label("Enter your Password");
     private PasswordTextBox userPassword = new PasswordTextBox();
-    private Label labelUserPasswordRepeat = new Label("Please repeat your Password");
+    private Label labelUserPasswordRepeat = new Label("Confirm your Password");
     private PasswordTextBox userPasswordRepeat = new PasswordTextBox();
     private Label labelUserEmail = new Label("Enter your Email");
     private TextBox userEmail = new TextBox();
@@ -34,27 +35,68 @@ public class GWTSpring implements EntryPoint {
     private RadioButton radio1 = new RadioButton("radioGroup", "Teacher");
     private RadioButton radio2 = new RadioButton("radioGroup", "Student");
     private VerticalPanel verticalPanel = new VerticalPanel();
-    private Button button = new Button("Sign me up!");
+    private Button button = new Button("Sign up!");
     private String specialEvents= new String();
+
 
     public void onModuleLoad() {
 
+        verticalPanel.setStyleName("form",true);
+
+        titleLabel.setStyleName("form-title",true);
+        verticalPanel.add(titleLabel);
+
         radio2.setValue(true);
+
+
         verticalPanel.add(labelName);
+        labelName.setStyleName("form-label",true);
         verticalPanel.add(userName);
+        userName.setStyleName("form-control",true);
+        userName.getElement().setPropertyString("placeholder","Name");
         verticalPanel.add(labelSurname);
+        labelSurname.setStyleName("form-label",true);
         verticalPanel.add(userSurname);
+        userSurname.setStyleName("form-control",true);
+        userSurname.getElement().setPropertyString("placeholder","Surname");
+
+
         verticalPanel.add(labelUserPassword);
+        labelUserPassword.setStyleName("form-label",true);
         verticalPanel.add(userPassword);
+        userPassword.setStyleName("form-control",true);
+        userPassword.getElement().setPropertyString("placeholder","Password");
+
         verticalPanel.add(labelUserPasswordRepeat);
+        labelUserPasswordRepeat.setStyleName("form-label",true);
         verticalPanel.add(userPasswordRepeat);
+        userPasswordRepeat.setStyleName("form-control",true);
+        userPasswordRepeat.getElement().setPropertyString("placeholder","Confirm Password");
         verticalPanel.add(labelUserEmail);
+        labelUserEmail.setStyleName("form-label",true);
         verticalPanel.add(userEmail);
+        userEmail.setStyleName("form-control",true);
+        userEmail.getElement().setPropertyString("placeholder","Email");
+
+
         verticalPanel.add(labelChooseRole);
+        labelChooseRole.setStyleName("form-label",true);
         verticalPanel.add(radio1);
+        radio1.setStyleName("form-label",true);
+        labelChooseRole.setStyleName("form-label",true);
+        radio1.setStyleName("radio-btn",true);
         verticalPanel.add(radio2);
+        radio2.setStyleName("form-label",true);
+        radio2.setStyleName("radio-btn",true);
+        radio2.setPixelSize(100,100);
+        radio2.getElement();
+        button.setStyleName("btn",true);
         verticalPanel.add(button);
+
+
+
         verticalPanel.addStyleName("form");
+
         RootPanel.get().add(verticalPanel);
 
 
