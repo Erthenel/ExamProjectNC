@@ -10,7 +10,7 @@ import static org.junit.Assert.*;
 public class UniversalFieldVerifierTest {
 
     UniversalFieldVerifier ufv=new UniversalFieldVerifier();
-
+/*
     @Test
     public void verify1() throws Exception {
 
@@ -55,5 +55,5 @@ public class UniversalFieldVerifierTest {
     }
 
 
-
+*/
 }

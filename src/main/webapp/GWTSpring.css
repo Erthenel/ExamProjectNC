@@ -98,7 +98,8 @@ input[type=radio] {
 }
 
 .popUpBlock{
-    position:fixed;
+    position:relative;
+    border:2px solid black;
     z-index: 10;
     top:40vh;
     left:60vh;
