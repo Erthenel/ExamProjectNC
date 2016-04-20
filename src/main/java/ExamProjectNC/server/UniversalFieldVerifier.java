@@ -40,7 +40,7 @@ public class UniversalFieldVerifier<E> {
             if (!(user.getUser_password().matches("(.*[a-z]+.*[0-9]+.*[A-Z]+.*)" +
                     "|(.*[a-z]+.*[A-Z]+.*[0-9]+.*)|(.*[A-Z]+.*[a-z]+.*[0-9]+.*)|(.*[0-9]+.*[a-z]+.*[A-Z]+)|" +
                     "(.*[A-Z]+.*[0-9]+.*[a-z]+)|(.*[0-9]+.*[A-Z]+.*[a-z]+)")) )
-            list.add("Error in your Password. You must have at 1 uppercase, 1 lowercase letter and at least 1 digit.");
+            list.add("Error in your Password. You must have 1 uppercase, 1 lowercase letter and at least 1 digit in your password.");
             if (user.getUser_password().length()<5) list.add("Error in your Password. It's too short. At least 5 symbols are required.");
 
         } else if (tmp.matches(".*Exam$")){

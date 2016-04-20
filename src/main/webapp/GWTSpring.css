@@ -3,34 +3,30 @@
     font-family: "courier new", courier;
     margin-bottom: 10px;
 }
-.radio-btn {
-    margin-top: 2px;
-    margin-bottom: 2px;
-}
+
 input[type=radio] {
-    width: 100%;
-    height: 10px;
+    width: 10%;
+    font-family: "courier new", courier;
+    font-size: 15px;
+    margin:0 auto;
+    text-align: center;
+
 }
+
 .form {
-    max-width: 330px;
+    margin-top:10px;
+    max-width: 400px;
     padding: 15px;
     margin: 0 auto;
+    border:1px dashed black;
 }
 
 .form-label{
     padding-top:10px;
     margin-bottom:5px;
-    font-size: 18px;
+    font-size: 15px;
     font-weight: normal;
     font-family: "courier new", courier;
-}
-
-.form,
-.form .checkbox {
-    margin-bottom: 10px;
-}
-.form .checkbox {
-    font-weight: normal;
 }
 .form .form-control {
     position: relative;
@@ -55,7 +51,7 @@ input[type=radio] {
     border-top-right-radius: 0;
 }
 
-.btn,.btn:before{
+.btn, .btn:before {
     display: inline-block;
     font-size: 20px;
     color: #fff;
@@ -68,29 +64,29 @@ input[type=radio] {
     opacity: 1;
     transition: .6s, opacity 0s 9999999s, visibility 0s 9999999s;
 }
-.btn{
-    content:"&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp";
-    position: relative;
+.btn {
+    margin:50px 50px;
     padding: calc(8px + 3px - 1px) calc(15px + 10px - 1px);
     border: 1px solid rgba(62,153,239,.5);
-    background: linear-gradient(to left, rgb(62,153,239) 1%,
-    #fff 3%, rgb(44,135,232) 8%, rgba(255,255,255,.3) 50%, rgb(44,135,232) 92%,
-    #fff 97%, rgb(62,153,239) 99%) no-repeat;
-}
-.btn:before{
+    background: #52a8ff;
+  }
+
+.btn:before {
+
     position:  absolute;
     bottom: -7px;
     left: -1px;
     width: calc(100% - (15px + 10px - 1px)*2);
-    background: #fff linear-gradient(rgb(58,160,253), rgb(4,88,192) 60%, rgb(49,112,201));
-    box-shadow: 0 10px 18px rgba(0,0,0,.5);}
-.btn:hover{
+    background: #3756ff;
+    box-shadow: 0 10px 18px rgba(0,0,0,.5);
+}
+.btn:hover {
     -webkit-transform: scale(1.1, 1.1);
     transform: scale(1.1, 1.1);
 }
-.btn:hover:before{
+.btn:hover:before {
     border-color: #0766d8;
-    background: #fff linear-gradient(#3fadff, #0766d8 60%, #3279dd);
+    background: #2c8dff;
 }
 .btn:focus,
 .btn:active {
@@ -99,4 +95,21 @@ input[type=radio] {
     opacity: 0;
     visibility: hidden;
     transition: .4s;
+}
+
+.popUpBlock{
+    position:fixed;
+    z-index: 10;
+    top:40vh;
+    left:60vh;
+    width:auto;
+    height:auto;
+    background-color:#e7e7ea;
+    color:black;
+    padding:40px;
+    font-family: "courier new", courier;
+    font-size:18px;
+    text-align:center;
+    box-shadow: 0 0 3px #383840;
+    display: block;
 }

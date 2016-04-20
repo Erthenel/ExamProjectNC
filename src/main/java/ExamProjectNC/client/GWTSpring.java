@@ -9,6 +9,8 @@ import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.event.dom.client.KeyUpEvent;
 import com.google.gwt.event.dom.client.KeyUpHandler;
+import com.google.gwt.event.logical.shared.CloseEvent;
+import com.google.gwt.event.logical.shared.CloseHandler;
 import com.google.gwt.user.cellview.client.TextHeader;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.rpc.AsyncCallback;
@@ -19,7 +21,7 @@ import java.util.List;
 public class GWTSpring implements EntryPoint {
 
     private RegisterUserServiceAsync registerUserService = GWT.create(RegisterUserService.class);
-
+private PopupPanel popupPanel = new PopupPanel();
     private Label titleLabel=new Label("Registration");
     private Label labelName = new Label("Enter your Name");
     private Label labelSurname = new Label("Enter your Surname");
@@ -35,11 +37,24 @@ public class GWTSpring implements EntryPoint {
     private RadioButton radio1 = new RadioButton("radioGroup", "Teacher");
     private RadioButton radio2 = new RadioButton("radioGroup", "Student");
     private VerticalPanel verticalPanel = new VerticalPanel();
-    private Button button = new Button("Sign up!");
+    private Button button = new Button("Submit");
     private String specialEvents= new String();
 
 
     public void onModuleLoad() {
+        popupPanel.hide();
+        popupPanel.center();
+        popupPanel.addCloseHandler(new CloseHandler<PopupPanel>() {
+            public void onClose(CloseEvent<PopupPanel> event) {
+                popupPanel.hide();
+                popupPanel.clear();
+            }
+        });
+
+        popupPanel.setAutoHideEnabled(true);
+        popupPanel.setAnimationEnabled(true);
+        popupPanel.setTitle("Attention!");
+
 
         verticalPanel.setStyleName("form",true);
 
@@ -83,14 +98,14 @@ public class GWTSpring implements EntryPoint {
         labelChooseRole.setStyleName("form-label",true);
         verticalPanel.add(radio1);
         radio1.setStyleName("form-label",true);
+
         labelChooseRole.setStyleName("form-label",true);
-        radio1.setStyleName("radio-btn",true);
         verticalPanel.add(radio2);
         radio2.setStyleName("form-label",true);
-        radio2.setStyleName("radio-btn",true);
+
         radio2.setPixelSize(100,100);
         radio2.getElement();
-        button.setStyleName("btn",true);
+        button.setStyleName("btn");
         verticalPanel.add(button);
 
 
@@ -107,8 +122,11 @@ public class GWTSpring implements EntryPoint {
 
             public void onSuccess(List<String> list) {
                 if (list.isEmpty()) {
-                    Window.alert("Registration successfully completed");
-                    Window.Location.replace("\\GWTSpring\\happyRegistry");
+
+                    popupPanel.show();
+                    popupPanel.setStyleName("popUpBlock");
+                    popupPanel.add(new Label("Registration successfully completed!"));
+
                 } else {
                     String gatherAns = new String();
                     gatherAns+=specialEvents;
@@ -116,7 +134,11 @@ public class GWTSpring implements EntryPoint {
                     for (String ans:list) {
                         gatherAns+="\n"+ans;
                     }
-                    Window.alert("You have following mistakes:"+gatherAns);
+                    popupPanel.show();
+                    popupPanel.setStyleName("popUpBlock");
+                    popupPanel.add(new Label("You have following mistakes:\n"+gatherAns));
+                    //добавить кнопку
+                   // Window.alert("You have following mistakes:"+gatherAns);
                 }
             }
         };
