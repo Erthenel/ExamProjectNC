@@ -13,9 +13,13 @@ import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.*;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class GWTSpring implements EntryPoint {
+
+    private Set<String> formField=new HashSet<String>();
 
     private RegisterUserServiceAsync registerUserService = GWT.create(RegisterUserService.class);
     private PopupPanel popupPanel = new PopupPanel();
@@ -91,9 +95,12 @@ public class GWTSpring implements EntryPoint {
         radio2.setPixelSize(100,100);
         radio2.getElement();
         button.setStyleName("btn");
-        verticalPanel.add(button);
+        button.setStyleName("disabled", true);
 
+
+        verticalPanel.add(button);
         verticalPanel.addStyleName("form");
+
         RootPanel.get().add(verticalPanel);
 
     }
@@ -116,9 +123,11 @@ public class GWTSpring implements EntryPoint {
                     popupPanel.add(new Label("Name consists of restricted symbols!"));
                     userName.removeStyleName("light_green");
                     userName.setStyleName("light_yellow",true);
+                    openSubmitButton("userName",false);
                 } else {
                     userName.removeStyleName("light_yellow");
                     userName.setStyleName("light_green",true);
+                    openSubmitButton("userName",true);
                 }
             }
         });
@@ -130,9 +139,11 @@ public class GWTSpring implements EntryPoint {
                     popupPanel.add(new Label("Surname consists of restricted symbols!"));
                     userSurname.removeStyleName("light_green");
                     userSurname.setStyleName("light_yellow",true);
+                    openSubmitButton("userSurname",false);
                 } else {
                     userSurname.removeStyleName("light_yellow");
                     userSurname.setStyleName("light_green",true);
+                    openSubmitButton("userSurname",true);
                 }
             }
         });
@@ -143,19 +154,23 @@ public class GWTSpring implements EntryPoint {
                     popupPanel.add(new Label("Password's max length is 30 symbols only!"));
                     userPassword.removeStyleName("light_green");
                     userPassword.setStyleName("light_yellow",true);
+                    openSubmitButton("userPassword",false);
                 } else if (!(userPassword.getValue().matches(".*[A-Z].*")&((userPassword.getValue().matches(".*[a-z].*"))&((userPassword.getValue().matches(".*[0-9].*")))))) {
                     popupPanel.show();
                     popupPanel.add(new Label("Your password must contain at least 1 uppercase, 1 lowercase letter and 1 digit!"));
                     userPassword.removeStyleName("light_green");
                     userPassword.setStyleName("light_yellow",true);
+                    openSubmitButton("userPassword",false);
                 } else if (userPassword.getValue().length()<5){
                     popupPanel.show();
                     popupPanel.add(new Label("At least 5 symbols are required in a password!"));
                     userPassword.removeStyleName("light_green");
                     userPassword.setStyleName("light_yellow",true);
+                    openSubmitButton("userPassword",false);
                 } else {
                     userPassword.removeStyleName("light_yellow");
                     userPassword.setStyleName("light_green",true);
+                    openSubmitButton("userPassword",true);
                 }
             }
         });
@@ -166,9 +181,11 @@ public class GWTSpring implements EntryPoint {
                     popupPanel.add(new Label("Passwords do not match. Confirm it once more."));
                     userPasswordRepeat.removeStyleName("light_green");
                     userPasswordRepeat.setStyleName("light_yellow",true);
+                    openSubmitButton("userPasswordRepeat",false);
                 } else {
                     userPasswordRepeat.removeStyleName("light_yellow");
                     userPasswordRepeat.setStyleName("light_green",true);
+                    openSubmitButton("userPasswordRepeat",true);
                 }
 
             }
@@ -180,9 +197,11 @@ public class GWTSpring implements EntryPoint {
                     popupPanel.add(new Label("Passwords do not match. Confirm it once more."));
                     userEmail.removeStyleName("light_green");
                     userEmail.setStyleName("light_yellow",true);
+                    openSubmitButton("userEmail",false);
                 } else {
                     userEmail.removeStyleName("light_yellow");
                     userEmail.setStyleName("light_green",true);
+                    openSubmitButton("userEmail",true);
                 }
             }
         });
@@ -229,6 +248,18 @@ public class GWTSpring implements EntryPoint {
             }
         });
 
+    }
+
+    private void openSubmitButton(String fieldName,boolean status){
+        if (status==true) formField.add(fieldName);
+        else formField.remove(fieldName);
+
+        if (formField.toArray().length==5) {
+            button.removeStyleName("disabled");
+        }
+        else {
+            button.setStyleName("disabled",true);
+        }
     }
 
     public void onModuleLoad() {

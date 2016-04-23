@@ -51,6 +51,11 @@ input[type=radio] {
     border-top-right-radius: 0;
 }
 
+.disabled{
+    /*visibility: hidden;*/
+    display: none !important;
+}
+
 .btn, .btn:before {
     display: inline-block;
     font-size: 20px;
