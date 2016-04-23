@@ -38,27 +38,18 @@ public class GWTSpring implements EntryPoint {
     private String specialEvents= new String();
 
 
-    public void onModuleLoad() {
+    private void initWidgets(){
         //INITIALIZATION-------------------------------------------------------------->>>>>>>>
         popupPanel.hide();
         popupPanel.center();
-        popupPanel.addCloseHandler(new CloseHandler<PopupPanel>() {
-            public void onClose(CloseEvent<PopupPanel> event) {
-                popupPanel.hide();
-                popupPanel.clear();
-            }
-        });
-
         popupPanel.setAutoHideEnabled(true);
         popupPanel.setAnimationEnabled(true);
         popupPanel.setTitle("Attention!");
-
 
         verticalPanel.setStyleName("form",true);
         titleLabel.setStyleName("form-title",true);
         verticalPanel.add(titleLabel);
         radio2.setValue(true);
-
 
         verticalPanel.add(labelName);
         labelName.setStyleName("form-label",true);
@@ -70,7 +61,6 @@ public class GWTSpring implements EntryPoint {
         verticalPanel.add(userSurname);
         userSurname.setStyleName("form-control",true);
         userSurname.getElement().setPropertyString("placeholder","Surname");
-
 
         verticalPanel.add(labelUserPassword);
         labelUserPassword.setStyleName("form-label",true);
@@ -89,7 +79,6 @@ public class GWTSpring implements EntryPoint {
         userEmail.setStyleName("form-control",true);
         userEmail.getElement().setPropertyString("placeholder","Email");
 
-
         verticalPanel.add(labelChooseRole);
         labelChooseRole.setStyleName("form-label",true);
         verticalPanel.add(radio1);
@@ -107,62 +96,94 @@ public class GWTSpring implements EntryPoint {
         verticalPanel.addStyleName("form");
         RootPanel.get().add(verticalPanel);
 
+    }
+
+    private void initHandlers(){
         //HANDLERS------------------------------------------------------------------------>>>>>>>>>>>>
 
-      userName.addChangeHandler(new ChangeHandler() {
-          public void onChange(ChangeEvent event) {
-             if (!userName.getValue().trim().matches("[A-Za-zА-Яа-я]{2,20}")) {
-                 popupPanel.show();
-                 popupPanel.add(new Label("Name consists of restricted symbols!"));
-                 userName.setStyleName("light_yellow",true);
-             } else userName.setStyleName("light_green",true);
-          }
-      });
+        popupPanel.addCloseHandler(new CloseHandler<PopupPanel>() {
+            public void onClose(CloseEvent<PopupPanel> event) {
+                popupPanel.hide();
+                popupPanel.clear();
+            }
+        });
+
+        userName.addChangeHandler(new ChangeHandler() {
+            public void onChange(ChangeEvent event) {
+
+                if (!userName.getValue().trim().matches("[A-Za-zА-Яа-я]{2,20}")) {
+                    popupPanel.show();
+                    popupPanel.add(new Label("Name consists of restricted symbols!"));
+                    userName.removeStyleName("light_green");
+                    userName.setStyleName("light_yellow",true);
+                } else {
+                    userName.removeStyleName("light_yellow");
+                    userName.setStyleName("light_green",true);
+                }
+            }
+        });
 
         userSurname.addChangeHandler(new ChangeHandler() {
             public void onChange(ChangeEvent event) {
                 if (!userSurname.getValue().trim().matches("[A-Za-zА-Яа-я]{2,20}")) {
                     popupPanel.show();
                     popupPanel.add(new Label("Surname consists of restricted symbols!"));
+                    userSurname.removeStyleName("light_green");
                     userSurname.setStyleName("light_yellow",true);
-                } else userSurname.setStyleName("light_green",true);
+                } else {
+                    userSurname.removeStyleName("light_yellow");
+                    userSurname.setStyleName("light_green",true);
+                }
             }
         });
-     userPassword.addChangeHandler(new ChangeHandler() {
-         public void onChange(ChangeEvent event) {
-             if ((userPassword.getValue().length()>30)) {
-                 popupPanel.show();
-                 popupPanel.add(new Label("Password's max length is 30 symbols only!"));
-                 userPassword.setStyleName("light_yellow",true);
-             } else if (!(userPassword.getValue().matches(".*[A-Z].*")&((userPassword.getValue().matches(".*[a-z].*"))&((userPassword.getValue().matches(".*[0-9].*")))))) {
-                 popupPanel.show();
-                 popupPanel.add(new Label("Your password must contain at least 1 uppercase, 1 lowercase letter and 1 digit!"));
-                 userPassword.setStyleName("light_yellow",true);
-             } else if (userPassword.getValue().length()<5){
-                 popupPanel.show();
-                 popupPanel.add(new Label("At least 5 symbols are required in a password!"));
-                 userPassword.setStyleName("light_yellow",true);
-             } else userPassword.setStyleName("light_green",true);
-         }
-     });
-
+        userPassword.addChangeHandler(new ChangeHandler() {
+            public void onChange(ChangeEvent event) {
+                if ((userPassword.getValue().length()>30)) {
+                    popupPanel.show();
+                    popupPanel.add(new Label("Password's max length is 30 symbols only!"));
+                    userPassword.removeStyleName("light_green");
+                    userPassword.setStyleName("light_yellow",true);
+                } else if (!(userPassword.getValue().matches(".*[A-Z].*")&((userPassword.getValue().matches(".*[a-z].*"))&((userPassword.getValue().matches(".*[0-9].*")))))) {
+                    popupPanel.show();
+                    popupPanel.add(new Label("Your password must contain at least 1 uppercase, 1 lowercase letter and 1 digit!"));
+                    userPassword.removeStyleName("light_green");
+                    userPassword.setStyleName("light_yellow",true);
+                } else if (userPassword.getValue().length()<5){
+                    popupPanel.show();
+                    popupPanel.add(new Label("At least 5 symbols are required in a password!"));
+                    userPassword.removeStyleName("light_green");
+                    userPassword.setStyleName("light_yellow",true);
+                } else {
+                    userPassword.removeStyleName("light_yellow");
+                    userPassword.setStyleName("light_green",true);
+                }
+            }
+        });
         userPasswordRepeat.addChangeHandler(new ChangeHandler() {
             public void onChange(ChangeEvent event) {
                 if (!userPassword.getValue().equals(userPasswordRepeat.getValue())){
                     popupPanel.show();
                     popupPanel.add(new Label("Passwords do not match. Confirm it once more."));
+                    userPasswordRepeat.removeStyleName("light_green");
                     userPasswordRepeat.setStyleName("light_yellow",true);
-                } else userPasswordRepeat.setStyleName("light_green",true);
+                } else {
+                    userPasswordRepeat.removeStyleName("light_yellow");
+                    userPasswordRepeat.setStyleName("light_green",true);
+                }
 
             }
         });
         userEmail.addChangeHandler(new ChangeHandler() {
             public void onChange(ChangeEvent event) {
                 if (!userEmail.getValue().matches("^[-a-z0-9!#$%&'*+/=?^_`{|}~]+(?:\\.[-a-z0-9!#$%&'*+/=?^_`{|}~]+)*@(?:[a-z0-9]([-a-z0-9]{0,61}[a-z0-9])?\\.)*(?:aero|arpa|asia|biz|cat|com|coop|edu|gov|info|int|jobs|mil|mobi|museum|name|net|org|pro|tel|travel|[a-z][a-z])$")) {
-                 popupPanel.show();
-                 popupPanel.add(new Label("Passwords do not match. Confirm it once more."));
-                 userEmail.setStyleName("light_yellow", true);
-                 } else userEmail.setStyleName("light_green",true);
+                    popupPanel.show();
+                    popupPanel.add(new Label("Passwords do not match. Confirm it once more."));
+                    userEmail.removeStyleName("light_green");
+                    userEmail.setStyleName("light_yellow",true);
+                } else {
+                    userEmail.removeStyleName("light_yellow");
+                    userEmail.setStyleName("light_green",true);
+                }
             }
         });
 
@@ -190,7 +211,7 @@ public class GWTSpring implements EntryPoint {
                     popupPanel.setStyleName("popUpBlock");
                     popupPanel.add(new Label("You have following mistakes:\n"+gatherAns));
                     //добавить кнопку
-                   // Window.alert("You have following mistakes:"+gatherAns);
+                    // Window.alert("You have following mistakes:"+gatherAns);
                 }
             }
         };
@@ -207,6 +228,12 @@ public class GWTSpring implements EntryPoint {
                         callback);
             }
         });
+
+    }
+
+    public void onModuleLoad() {
+        initWidgets();
+        initHandlers();
 
     }
 }
