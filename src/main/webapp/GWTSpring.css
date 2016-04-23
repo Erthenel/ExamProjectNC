@@ -93,8 +93,7 @@ input[type=radio] {
     border-color: #0766d8;
     background: #2c8dff;
 }
-.btn:focus,
-.btn:active {
+.btn:focus {
     -webkit-transform: scale(2, 2);
     transform: scale(2, 2);
     opacity: 0;
@@ -125,3 +124,20 @@ input[type=radio] {
 .light_yellow{
     background-color:rgba(223, 240, 12, 0.42);
 }
+
+.btn2{
+    display: inline-block;
+    font-size: 20px;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 100px;
+    border: none;
+    outline: none;
+    opacity: 1;
+    margin:50px 50px;
+    background-color: rgba(67, 117, 112, 0.67);
+    padding: 12px 26px;
+
+}
+
+

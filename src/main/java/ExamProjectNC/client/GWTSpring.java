@@ -39,6 +39,7 @@ public class GWTSpring implements EntryPoint {
     private RadioButton radio2 = new RadioButton("radioGroup", "Student");
     private VerticalPanel verticalPanel = new VerticalPanel();
     private Button button = new Button("Submit");
+    private Button buttonDuplicate = new Button("Submit");
     private String specialEvents= new String();
 
 
@@ -97,8 +98,10 @@ public class GWTSpring implements EntryPoint {
         button.setStyleName("btn");
         button.setStyleName("disabled", true);
 
+        buttonDuplicate.setStyleName("btn2");
 
         verticalPanel.add(button);
+        verticalPanel.add(buttonDuplicate);
         verticalPanel.addStyleName("form");
 
         RootPanel.get().add(verticalPanel);
@@ -209,7 +212,9 @@ public class GWTSpring implements EntryPoint {
         //Async callbacks------------------------------------------------------------------------>>>>>>>>>>>>
         final AsyncCallback<List<String>> callback = new AsyncCallback<List<String>>() {
             public void onFailure(Throwable caught) {
-                Window.alert(caught.getMessage());
+               // Window.alert(caught.getMessage());
+              //  popupPanel.show();
+                //popupPanel.add(new Label(caught.getMessage()));
             }
 
             public void onSuccess(List<String> list) {
@@ -245,6 +250,7 @@ public class GWTSpring implements EntryPoint {
                 registerUserService.register(
                         new User(userEmail.getValue(), userPassword.getValue(), userName.getValue()+" "+userSurname.getValue(), role),
                         callback);
+                button.setStyleName("btn");
             }
         });
 
@@ -256,9 +262,11 @@ public class GWTSpring implements EntryPoint {
 
         if (formField.toArray().length==5) {
             button.removeStyleName("disabled");
+            buttonDuplicate.setStyleName("disabled", true);
         }
         else {
             button.setStyleName("disabled",true);
+            buttonDuplicate.removeStyleName("disabled");
         }
     }
 
