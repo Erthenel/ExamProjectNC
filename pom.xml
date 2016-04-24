@@ -7,7 +7,7 @@
     <groupId>org.netcracker</groupId>
     <artifactId>ExamProjectNC</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <packaging>war</packaging>
+
     <properties>
 
         <!-- Generic properties -->
@@ -131,6 +131,13 @@
             <version>${spring4gwt.version}</version>
             <scope>system</scope>
             <systemPath>${basedir}/src/main/webapp/WEB-INF/lib/spring4gwt-0.0.1.jar</systemPath>
+        </dependency>
+
+        <!-- URL rewriter -->
+        <dependency>
+            <groupId>org.tuckey</groupId>
+            <artifactId>urlrewritefilter</artifactId>
+            <version>4.0.3</version>
         </dependency>
 
 
