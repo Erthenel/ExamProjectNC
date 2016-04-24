@@ -4,35 +4,57 @@ import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.KeyUpEvent;
 import com.google.gwt.event.dom.client.KeyUpHandler;
+import com.google.gwt.user.client.Command;
+import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.*;
 
 public class PersonalOffice implements EntryPoint {
 
-   private TestServiceAsync testService = GWT.create(TestService.class);
+    private TestServiceAsync testService = GWT.create(TestService.class);
 
-    private TextBox nameTextBox = new TextBox();
-    private Label greetingLabel = new Label("Hello, GWT!");
+
+    private MenuBar menuBar = new MenuBar();
+    private HorizontalPanel horizontalPanel = new HorizontalPanel();
+    private HorizontalPanel horizontalDynamicPanel = new HorizontalPanel();
+    private Label helloLabel = new Label("Hello! Press the button on menu");
+
+    //Dynamic components
+    private FirstItem firstItem;
+    private SecondItem secondItem;
 
     public void onModuleLoad() {
-        RootPanel.get().add(nameTextBox);
-        RootPanel.get().add(greetingLabel);
+        Command firstCommand = new Command() {
+            public void execute() {
+                firstItem = new FirstItem();
+                horizontalDynamicPanel.clear();
+                horizontalDynamicPanel.add(firstItem);
+            }
+        };
+        Command secondCommand = new Command() {
+            public void execute() {
+                secondItem = new SecondItem();
+                horizontalDynamicPanel.clear();
+                horizontalDynamicPanel.add(secondItem);
+            }
+        };
+        menuBar.addItem("First Item", firstCommand);
+        menuBar.addItem("Second Item", secondCommand);
+        horizontalPanel.add(menuBar);
+        horizontalDynamicPanel.add(helloLabel);
+        RootPanel.get().add(horizontalPanel);
+        RootPanel.get().add(horizontalDynamicPanel);
+
 
 
         final AsyncCallback<String> callback = new AsyncCallback<String>() {
             public void onFailure(Throwable caught) {
-                greetingLabel.setText(caught.getMessage());
+                Window.alert(caught.getMessage());
             }
 
             public void onSuccess(String result) {
-                greetingLabel.setText(result);
             }
         };
 
-        nameTextBox.addKeyUpHandler(new KeyUpHandler() {
-            public void onKeyUp(KeyUpEvent keyUpEvent) {
-                testService.greet(nameTextBox.getText(), callback);
-            }
-        });
     }
 }
