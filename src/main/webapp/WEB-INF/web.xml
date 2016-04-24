@@ -17,10 +17,12 @@
     <servlet-mapping>
         <servlet-name>springGwtRemoteServiceServlet</servlet-name>
         <url-pattern>/GWTSpring/springGwtServices/*</url-pattern>
+        <url-pattern>/PersonalOffice/springGwtServices/*</url-pattern>
     </servlet-mapping>
 
     <welcome-file-list>
-        <welcome-file>GWTSpring.html</welcome-file>
+        <welcome-file>Test.html</welcome-file>
     </welcome-file-list>
+
 
 </web-app>
