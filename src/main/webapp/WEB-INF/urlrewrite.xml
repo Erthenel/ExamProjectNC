@@ -6,10 +6,25 @@
 
 <urlrewrite>
 
-    <!--<rule>
-        <from>^/some/olddir/(.*)$</from>
-        <to type="redirect">/very/newdir/$1</to>
-    </rule>-->
 
+    <rule>
+        <from>^/PersonalOffice/teacher$</from>
+        <to>/PersonalOfficeTeacher.html</to>
+    </rule>
+
+    <outbound-rule>
+        <from>^/PersonalOfficeTeacher.html$</from>
+        <to>/PersonalOffice/teacher</to>
+    </outbound-rule>
+
+    <rule>
+        <from>^/PersonalOffice/student$</from>
+        <to>/PersonalOfficeStudent.html</to>
+    </rule>
+
+    <outbound-rule>
+        <from>^/PersonalOfficeStudent.html$</from>
+        <to>/PersonalOffice/student</to>
+    </outbound-rule>
 
 </urlrewrite>
