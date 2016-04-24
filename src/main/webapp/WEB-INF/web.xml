@@ -17,6 +17,7 @@
     <servlet-mapping>
         <servlet-name>springGwtRemoteServiceServlet</servlet-name>
         <url-pattern>/GWTSpring/springGwtServices/*</url-pattern>
+        <url-pattern>/PersonalOffice/springGwtServices/*</url-pattern>
     </servlet-mapping>
 
     <welcome-file-list>
