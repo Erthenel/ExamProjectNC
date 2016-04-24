@@ -176,7 +176,7 @@
 
     </plugins>
 
-        <finalName>ExamProjectNC</finalName>
+        <finalName>AccountRegistrationModule</finalName>
     </build>
 
 </project>

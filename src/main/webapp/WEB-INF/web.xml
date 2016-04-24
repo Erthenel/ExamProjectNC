@@ -16,7 +16,7 @@
 
     <servlet-mapping>
         <servlet-name>springGwtRemoteServiceServlet</servlet-name>
-        <url-pattern>/GWTSpring/springGwtServices/*</url-pattern>
+        <url-pattern>/Registration/springGwtServices/*</url-pattern>
         <url-pattern>/PersonalOffice/springGwtServices/*</url-pattern>
     </servlet-mapping>
 
@@ -28,6 +28,8 @@
         <filter-name>UrlRewriteFilter</filter-name>
         <filter-class>org.tuckey.web.filters.urlrewrite.UrlRewriteFilter</filter-class>
     </filter>
+
+
     <filter-mapping>
         <filter-name>UrlRewriteFilter</filter-name>
         <url-pattern>/*</url-pattern>

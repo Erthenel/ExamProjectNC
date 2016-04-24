@@ -2,12 +2,12 @@
         <!DOCTYPE module PUBLIC "-//Google Inc.//DTD Google Web Toolkit 1.6.2//EN"
         "http://google-web-toolkit.googlecode.com/svn/tags/1.6.2/distro-source/core/src/gwt-module.dtd">
 
-<module rename-to="GWTSpring">
+<module rename-to="Registration">
     <inherits name='com.google.gwt.user.User'/>
     <inherits name='com.google.gwt.user.theme.chrome.Chrome'/>
     <!--    <inherits name='com.google.gwt.user.theme.dark.Dark'/>-->
      <source path='client'/>
      <source path='shared'/>
-     <entry-point class='ExamProjectNC.client.GWTSpring'/>
+     <entry-point class='AccountRegistrationModule.client.Registration'/>
 
  </module>

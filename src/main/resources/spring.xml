@@ -6,8 +6,6 @@
         http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.0.xsd
         http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd">
 
-    <tx:annotation-driven />
-
     <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
           destroy-method="close">
         <property name="driverClassName" value="org.postgresql.Driver" />
@@ -23,10 +21,10 @@
         <property name="dataSource" ref="dataSource" />
         <property name="annotatedClasses">
             <list>
-                <value>ExamProjectNC.shared.model.User</value>
-                <value>ExamProjectNC.shared.model.Exam</value>
-                <value>ExamProjectNC.shared.model.Examined</value>
-                <value>ExamProjectNC.shared.model.Group</value>
+                <value>AccountRegistrationModule.shared.model.User</value>
+                <value>AccountRegistrationModule.shared.model.Exam</value>
+                <value>AccountRegistrationModule.shared.model.Examined</value>
+                <value>AccountRegistrationModule.shared.model.Group</value>
             </list>
         </property>
         <property name="hibernateProperties">
@@ -38,20 +36,21 @@
         </property>
     </bean>
 
-    <bean id="userDAO" class="ExamProjectNC.server.dao.UserDAO">
+    <bean id="userDAO" class="AccountRegistrationModule.server.dao.UserDAO">
         <property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />
     </bean>
-<!--
-    <bean id="examDAO" class="ExamProjectNC.server.dao.ExamDAO">
+    <bean id="examDAO" class="AccountRegistrationModule.server.dao.ExamDAO">
         <property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory"/>
     </bean>
-    <bean id="groupDAO" class="ExamProjectNC.server.dao.GroupDAO">
+    <bean id="groupDAO" class="AccountRegistrationModule.server.dao.GroupDAO">
         <property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory"/>
     </bean>
-    <bean id="examinedDAO" class="ExamProjectNC.server.dao.ExaminedDAO">
+    <bean id="examinedDAO" class="AccountRegistrationModule.server.dao.ExaminedDAO">
         <property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory"/>
     </bean>
-    -->
+
+
+    <tx:annotation-driven />
     <bean id="transactionManager" class="org.springframework.orm.hibernate4.HibernateTransactionManager">
         <property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory"/>
         <property name="dataSource" ref="dataSource"/>

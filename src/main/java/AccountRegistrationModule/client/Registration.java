@@ -1,15 +1,11 @@
-package ExamProjectNC.client;
+package AccountRegistrationModule.client;
 
-import ExamProjectNC.shared.model.User;
+import AccountRegistrationModule.shared.model.User;
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.core.client.GWT;
-import com.google.gwt.dom.client.Document;
-import com.google.gwt.dom.client.HeadingElement;
 import com.google.gwt.event.dom.client.*;
 import com.google.gwt.event.logical.shared.CloseEvent;
 import com.google.gwt.event.logical.shared.CloseHandler;
-import com.google.gwt.user.cellview.client.TextHeader;
-import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.*;
 
@@ -17,7 +13,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-public class GWTSpring implements EntryPoint {
+public class Registration implements EntryPoint {
 
     private Set<String> formField=new HashSet<String>();
 
@@ -197,7 +193,7 @@ public class GWTSpring implements EntryPoint {
             public void onChange(ChangeEvent event) {
                 if (!userEmail.getValue().matches("^[-a-z0-9!#$%&'*+/=?^_`{|}~]+(?:\\.[-a-z0-9!#$%&'*+/=?^_`{|}~]+)*@(?:[a-z0-9]([-a-z0-9]{0,61}[a-z0-9])?\\.)*(?:aero|arpa|asia|biz|cat|com|coop|edu|gov|info|int|jobs|mil|mobi|museum|name|net|org|pro|tel|travel|[a-z][a-z])$")) {
                     popupPanel.show();
-                    popupPanel.add(new Label("Passwords do not match. Confirm it once more."));
+                    popupPanel.add(new Label("Your email is incorrect. Check it once more."));
                     userEmail.removeStyleName("light_green");
                     userEmail.setStyleName("light_yellow",true);
                     openSubmitButton("userEmail",false);

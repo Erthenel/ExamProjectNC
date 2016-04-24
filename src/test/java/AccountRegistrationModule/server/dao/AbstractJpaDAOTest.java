@@ -1,10 +1,7 @@
-package ExamProjectNC.server.dao;
+package AccountRegistrationModule.server.dao;
 
 
-import ExamProjectNC.shared.model.*;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
-
-import java.util.List;
 
 public class AbstractJpaDAOTest {
     private ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("spring.xml");

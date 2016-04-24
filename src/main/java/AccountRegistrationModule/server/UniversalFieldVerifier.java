@@ -1,14 +1,12 @@
-package ExamProjectNC.server;
+package AccountRegistrationModule.server;
 
-import ExamProjectNC.shared.model.*;
+import AccountRegistrationModule.shared.model.*;
 
 import java.util.LinkedList;
 import java.util.List;
 
 
 public class UniversalFieldVerifier<E> {
-
-
 
     public List<String> verify(E entity){
 

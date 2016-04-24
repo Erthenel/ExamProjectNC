@@ -1,9 +1,9 @@
 
-package ExamProjectNC.server;
+package AccountRegistrationModule.server;
 
-import ExamProjectNC.client.RegisterUserService;
-import ExamProjectNC.server.dao.UserDAO;
-import ExamProjectNC.shared.model.User;
+import AccountRegistrationModule.client.RegisterUserService;
+import AccountRegistrationModule.server.dao.UserDAO;
+import AccountRegistrationModule.shared.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.stereotype.Service;

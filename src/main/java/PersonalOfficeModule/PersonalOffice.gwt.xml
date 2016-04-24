@@ -6,7 +6,7 @@
     <inherits name='com.google.gwt.user.User'/>
     <inherits name='com.google.gwt.user.theme.chrome.Chrome'/>
     <source path='client'/>
-    <source path='ExamProjectNC/shared'/>
+    <source path='AccountRegistrationModule/shared'/>
 
     <entry-point class='PersonalOfficeModule.client.PersonalOffice'/>
 

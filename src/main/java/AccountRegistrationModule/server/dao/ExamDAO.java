@@ -1,13 +1,12 @@
-package ExamProjectNC.server.dao;
-import ExamProjectNC.shared.model.Examined;
+package AccountRegistrationModule.server.dao;
+import AccountRegistrationModule.shared.model.Exam;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-@Repository("ExaminedDAO")
-public class ExaminedDAO extends AbstractJpaDAO<Long, Examined> {
+@Repository("ExamDAO")
+public class ExamDAO extends AbstractJpaDAO<Long, Exam> {
 
     private SessionFactory sessionFactory;
 

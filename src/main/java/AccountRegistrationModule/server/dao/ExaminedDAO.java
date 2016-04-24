@@ -1,13 +1,12 @@
-package ExamProjectNC.server.dao;
-import ExamProjectNC.shared.model.Group;
+package AccountRegistrationModule.server.dao;
+import AccountRegistrationModule.shared.model.Examined;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-@Repository("GroupDAO")
-public class GroupDAO extends AbstractJpaDAO<Long, Group> {
+@Repository("ExaminedDAO")
+public class ExaminedDAO extends AbstractJpaDAO<Long, Examined> {
 
     private SessionFactory sessionFactory;
 
@@ -32,4 +31,3 @@ public class GroupDAO extends AbstractJpaDAO<Long, Group> {
     }
 
 }
-

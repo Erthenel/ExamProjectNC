@@ -1,7 +1,7 @@
 
-package ExamProjectNC.client;
+package AccountRegistrationModule.client;
 
-import ExamProjectNC.shared.model.User;
+import AccountRegistrationModule.shared.model.User;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 
 import java.util.List;

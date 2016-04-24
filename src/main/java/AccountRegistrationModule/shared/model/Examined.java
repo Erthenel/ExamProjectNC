@@ -1,4 +1,4 @@
-package ExamProjectNC.shared.model;
+package AccountRegistrationModule.shared.model;
 
 import javax.persistence.*;
 import java.sql.Timestamp;

@@ -1,4 +1,4 @@
-package ExamProjectNC.server.dao;
+package AccountRegistrationModule.server.dao;
 
 import org.hibernate.Query;
 import org.hibernate.Session;

@@ -1,10 +1,4 @@
-package ExamProjectNC.server;
-
-import ExamProjectNC.shared.model.Exam;
-import ExamProjectNC.shared.model.User;
-import org.junit.Test;
-
-import static org.junit.Assert.*;
+package AccountRegistrationModule.server;
 
 
 public class UniversalFieldVerifierTest {

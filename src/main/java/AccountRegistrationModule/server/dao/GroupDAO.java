@@ -1,25 +1,25 @@
-
-package ExamProjectNC.server.dao;
-import ExamProjectNC.shared.model.User;
+package AccountRegistrationModule.server.dao;
+import AccountRegistrationModule.shared.model.Group;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-@Repository("UserDAO")
-public class UserDAO extends AbstractJpaDAO<Long,User> {
+@Repository("GroupDAO")
+public class GroupDAO extends AbstractJpaDAO<Long, Group> {
 
     private SessionFactory sessionFactory;
 
     @Override
+    @Transactional
     public void setSessionFactory(SessionFactory sessionFactory) {
         this.sessionFactory = sessionFactory;
     }
 
     @Override
-    public SessionFactory getSessionFactory() {
-        return sessionFactory;
+    @Transactional
+    public SessionFactory getSessionFactory(){
+        return this.sessionFactory;
     }
 
     @Override
@@ -31,3 +31,4 @@ public class UserDAO extends AbstractJpaDAO<Long,User> {
     }
 
 }
+

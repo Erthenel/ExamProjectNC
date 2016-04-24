@@ -27,4 +27,15 @@
         <to>/PersonalOffice/student</to>
     </outbound-rule>
 
+    <rule>
+        <from>^/Registration$</from>
+        <to>/Registration.html</to>
+    </rule>
+
+    <outbound-rule>
+        <from>^/Registration.html$</from>
+        <to>/Registration</to>
+    </outbound-rule>
+
+
 </urlrewrite>
