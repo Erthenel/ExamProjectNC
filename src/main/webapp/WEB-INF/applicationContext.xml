@@ -1,13 +1,53 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<beans xmlns="http://www.springframework.org/schema/beans"
+<beans:beans xmlns:beans="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:context="http://www.springframework.org/schema/context"
+       xmlns="http://www.springframework.org/schema/security"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
         http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/security
+        http://www.springframework.org/schema/security/spring-security.xsd
         http://www.springframework.org/schema/context
         http://www.springframework.org/schema/context/spring-context.xsd">
+
 
   <context:component-scan base-package="AccountRegistrationModule"/>
   <context:component-scan base-package="PersonalOfficeModule"/>
 
-</beans>
+
+  <!---Spring security feats-->
+  <beans:bean id="customAuthListener"
+              class="PersonalOfficeModule.server.auth.CustomAuthListener" />
+
+  <http auto-config="true">
+
+     <intercept-url pattern="/gwt/**" access="hasRole('ROLE_USER')" />
+     <intercept-url pattern="/**/*.html" access="hasRole('ROLE_USER')" />
+      <intercept-url pattern="/PersonalOffice/account" access="hasRole('ROLE_USER')" />
+      <intercept-url pattern="/PersonalOffice/**" access="hasRole('ROLE_USER')" />
+      <intercept-url pattern="/PersonalOffice.html" access="hasRole('ROLE_USER')" />
+      <!--
+      <intercept-url pattern="/j_spring_security_check" access="hasRole('IS_AUTHENTICATED_ANONYMOUSLY')"/>
+      <intercept-url pattern="/login" access="hasRole('IS_AUTHENTICATED_ANONYMOUSLY')"/>
+      -->
+      <form-login
+            login-page="/login"
+            login-processing-url="/j_spring_security_check"
+            default-target-url="/PersonalOffice"
+            authentication-failure-url="/login?error"
+            username-parameter="j_username"
+            password-parameter="j_password" />
+    <logout logout-success-url="/login?logout" />
+      <csrf disabled="true"/>
+  </http>
+
+  <beans:bean id="customAuthenticationProvider"
+              class="PersonalOfficeModule.server.auth.CustomAuthenticationProvider" />
+
+  <authentication-manager alias="authenticationManager">
+    <authentication-provider ref="customAuthenticationProvider" />
+  </authentication-manager>
+
+
+</beans:beans>
+

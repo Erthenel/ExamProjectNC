@@ -8,24 +8,15 @@
 
 
     <rule>
-        <from>^/PersonalOffice/teacher$</from>
-        <to>/PersonalOfficeTeacher.html</to>
+        <from>^/PersonalOffice/account$</from>
+        <to>/PersonalOffice.html</to>
     </rule>
 
     <outbound-rule>
-        <from>^/PersonalOfficeTeacher.html$</from>
-        <to>/PersonalOffice/teacher</to>
+        <from>^/PersonalOffice.html$</from>
+        <to>/PersonalOffice/account</to>
     </outbound-rule>
 
-    <rule>
-        <from>^/PersonalOffice/student$</from>
-        <to>/PersonalOfficeStudent.html</to>
-    </rule>
-
-    <outbound-rule>
-        <from>^/PersonalOfficeStudent.html$</from>
-        <to>/PersonalOffice/student</to>
-    </outbound-rule>
 
     <rule>
         <from>^/Registration$</from>
@@ -37,5 +28,24 @@
         <to>/Registration</to>
     </outbound-rule>
 
+    <rule>
+        <from>^/login$</from>
+        <to>/login.jsp</to>
+    </rule>
+
+    <outbound-rule>
+        <from>^/login.jsp$</from>
+        <to>/login</to>
+    </outbound-rule>
+
+    <rule>
+        <from>^/login?error$</from>
+        <to>/login.jsp</to>
+    </rule>
+
+    <outbound-rule>
+        <from>^/login.jsp$</from>
+        <to>/login?error</to>
+    </outbound-rule>
 
 </urlrewrite>

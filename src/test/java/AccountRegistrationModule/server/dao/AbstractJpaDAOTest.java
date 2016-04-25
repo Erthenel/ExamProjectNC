@@ -1,6 +1,7 @@
 package AccountRegistrationModule.server.dao;
 
 
+import AccountRegistrationModule.shared.model.User;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 public class AbstractJpaDAOTest {
@@ -66,6 +67,12 @@ public class AbstractJpaDAOTest {
     public void deleteAll() throws Exception {
         System.out.println("Result of deleting "+userDAO.deleteAll());
         System.out.println(6);
-    }*/
+    }
 
+    @org.junit.Test
+    public void findByFieldName() throws Exception {
+       User user = userDAO.findByFieldName("user_email","test2@ya.ru");
+        System.out.println(user.toString());
+    }
+    */
 }

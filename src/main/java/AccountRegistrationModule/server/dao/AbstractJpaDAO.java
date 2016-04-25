@@ -93,6 +93,16 @@ public abstract class AbstractJpaDAO<K, E>  {
         return ans;
     }
 
+    @Transactional
+    public E findByFieldName(String fieldName,String fieldValue){
+        String queryStr = "FROM " + entityClass.getName() + " WHERE "+fieldName+"="+"\'"+fieldValue+"\'";
+        Query query = getSession().createQuery(queryStr);
+        List<E> ans=query.list();
+        if (ans.isEmpty()) ans.add(null);
+        getSession().close();
+        return ans.get(0);
+    }
+
     public abstract void setSessionFactory(SessionFactory sessionFactory);
     public abstract SessionFactory getSessionFactory();
     protected abstract Session getSession();

@@ -1,16 +1,16 @@
-package PersonalOfficeModule.client;
+package PersonalOfficeModule.client.Teacher_Items;
 
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.*;
 
-class FirstItem extends Composite implements ClickHandler {
-    private Label label = new Label("First Item pressed");
+public class SecondItem extends Composite implements ClickHandler {
+    private Label label = new Label("Second Item pressed");
     private TextBox textBox = new TextBox();
     private Button button = new Button("Press Me!");
 
-    FirstItem() {
+    public SecondItem() {
         VerticalPanel panel = new VerticalPanel();
         panel.add(label);
         panel.add(textBox);
